@@ -1,0 +1,107 @@
+{
+  "code_distribution_closure_contract": "sourcey.code-distribution-closure/v1",
+  "distribution_id": "agent-readiness-action",
+  "files": [
+    {
+      "path": "dist/contracts/agent-readiness/src/binding.js",
+      "sha256": "sha256:b6f4f3a1fba1f4b839920f7fdf28d4a0513c081b4629724bd00b26b1bd32f4e2"
+    },
+    {
+      "path": "dist/contracts/agent-readiness/src/declaration-reference.js",
+      "sha256": "sha256:463a89abd3043416e251f44ffcdf8f6a096197590857ef9a50af180f788a3396"
+    },
+    {
+      "path": "dist/contracts/agent-readiness/src/declaration.js",
+      "sha256": "sha256:e57ea5c7b01bd92f517550812bd1f3fa24ebf5b7fdb811f55834d8e79803f3e6"
+    },
+    {
+      "path": "dist/contracts/agent-readiness/src/jobs.js",
+      "sha256": "sha256:8e7b38d5e8340e5527506cfd3b2f66444eabdb7f257f2006d1c8e5ac0f7afd40"
+    },
+    {
+      "path": "dist/contracts/agent-readiness/src/operation.js",
+      "sha256": "sha256:ef01ffe984a5598d7e6ec203aac16e193f6fb6023d16f4a4e7b5aa9170ae358d"
+    },
+    {
+      "path": "dist/contracts/agent-readiness/src/run.js",
+      "sha256": "sha256:fc770a84e40fc6f236c566ed78fd62ea888bd8d7a39fd77407b64392af7cf369"
+    },
+    {
+      "path": "dist/contracts/agent-readiness/src/shared.js",
+      "sha256": "sha256:d74e7a1743a971fee9961d2dae056027fe7f57d499d65d55c66a1482c6bad73c"
+    },
+    {
+      "path": "dist/contracts/agent-readiness/src/surfaces.js",
+      "sha256": "sha256:1c7011d82808479e3f950a26ea0958e348daefa2e206cc68f26717986befe0c4"
+    },
+    {
+      "path": "dist/contracts/agent-readiness/src/verified-run.js",
+      "sha256": "sha256:58e69d6c8ddc127b2a52e9b264dfc2056d0a1e054cf6471f7059aa095cbfbdfd"
+    },
+    {
+      "path": "dist/contracts/api/src/values.js",
+      "sha256": "sha256:19e732cceffb1534106961bce4dae80b23d985faa161561791649b75955f9fc9"
+    },
+    {
+      "path": "dist/contracts/authoring/src/index.js",
+      "sha256": "sha256:87d19c0296f6c011b9648e1e83618a1fe0cab87bd4cfc3d1bac7dceb63b740d4"
+    },
+    {
+      "path": "dist/contracts/mcp/src/protocol-revisions.js",
+      "sha256": "sha256:fa094277edb8f1e8cd1f1a961a872dd4b2732da2c55845ffc10e6dcb13ecee8c"
+    },
+    {
+      "path": "dist/contracts/revisions/src/index.js",
+      "sha256": "sha256:1b9602053139b7a241ba75dd77cedc336667d825e41a13f1df6e3d4c6e938e63"
+    },
+    {
+      "path": "dist/contracts/standards/src/index.js",
+      "sha256": "sha256:2938de2247c215dcb6c1973c737325fda316131a349ee1b0d1babc794296683e"
+    },
+    {
+      "path": "dist/modules/agent-readiness-engine/src/allowance.js",
+      "sha256": "sha256:18c59e0ee8e7e42b65edc3d46e91f32d18de619ae2cf5341a2641fa00d4d5e87"
+    },
+    {
+      "path": "dist/modules/agent-readiness-engine/src/calls.js",
+      "sha256": "sha256:32bed89538e14b1de03a2cde9a66a0461de9609db3f24b79dba179ab5e5a0e96"
+    },
+    {
+      "path": "dist/modules/agent-readiness-engine/src/mcp-session.js",
+      "sha256": "sha256:357e6a72c75b74362feaac664d6ee99ef20da26185c36265e629d581f058609a"
+    },
+    {
+      "path": "dist/modules/agent-readiness-engine/src/perform.js",
+      "sha256": "sha256:759f6a16c429543c9366989a9ce7256c8cde3a559f9fdc3ddf2dcb8870c17cd6"
+    },
+    {
+      "path": "dist/modules/agent-readiness-engine/src/records.js",
+      "sha256": "sha256:49f9582f0eeaef9e619261a6bac169cf5bb1b9ff3a6f03c52971b71fe11c835c"
+    },
+    {
+      "path": "dist/modules/agent-readiness-engine/src/templates.js",
+      "sha256": "sha256:7a7c2865bb0c850470fab8f2b1f325f7788c2c269f6d55f77845140d4d7cb68f"
+    },
+    {
+      "path": "dist/modules/agent-readiness-jobs/src/index.js",
+      "sha256": "sha256:acfa3e5ee286c99128170b29526eb5365dd8a084e5082d4d7bc1b194a339e9d4"
+    },
+    {
+      "path": "dist/modules/catalog-primitives/src/index.js",
+      "sha256": "sha256:a1983a503ac9a3e989c71fda55c2bcd9ca987614cad1868ab3870281bca4f547"
+    },
+    {
+      "path": "dist/packages/agent-readiness-action/src/action.js",
+      "sha256": "sha256:53ef11456b3783df2e3e53d56dfc53510edccd09ae7c8494f6fdd5bfd27dc460"
+    },
+    {
+      "path": "dist/packages/agent-readiness-action/src/run.js",
+      "sha256": "sha256:18c5014d873ad3b4ee488d6d3938d93a4579977a5ef276f3e70d37eab5b87861"
+    },
+    {
+      "path": "dist/packages/evidence-runtime/src/executor.js",
+      "sha256": "sha256:14a95fb4205f099193b75c6c94ccc1aafc23eda059a4181bac33730f9da596f4"
+    }
+  ],
+  "closure_digest": "sha256:5143aaafa6d71218a74c79fd7000c3130f90dfc71cc8622ed42bb673085e2ec5"
+}

@@ -1,0 +1,8 @@
+{
+  "code_distribution_toolchain_contract": "sourcey.code-distribution-toolchain/v1",
+  "node": "22.23.3",
+  "npm": "12.2.0",
+  "typescript": "7.0.2",
+  "archive_format": "sourcey-canonical-tar-gzip/v1",
+  "archive_extension": ".tar.gz"
+}

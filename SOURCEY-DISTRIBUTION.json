@@ -1,0 +1,32 @@
+{
+  "code_distribution_definition_contract": "sourcey.code-distribution-definition/v1",
+  "distribution_id": "agent-readiness-action",
+  "package_name": "@sourcey/agent-readiness-action",
+  "description": "Run a Sourcey Agent Readiness job on its account holder's GitHub Actions runner, with their own credentials, and submit the attested run for Sourcey to replay.",
+  "audience": "Account holders verifying their own service's job, through the Action's reusable workflow.",
+  "channel": "The public sourcey/agent-readiness-action repository: one bundled runner and its reusable workflow, released by tag; never npm.",
+  "entries": {
+    ".": "run"
+  },
+  "bin": null,
+  "extras": [],
+  "forbidden_closure_prefixes": [
+    "dist/apps/",
+    "dist/contracts/agent-readiness/src/grade-policy",
+    "dist/modules/agent-readiness-engine/src/index",
+    "dist/modules/agent-readiness-engine/src/path",
+    "dist/modules/agent-readiness-engine/src/probes",
+    "dist/modules/agent-readiness-engine/src/profile",
+    "dist/modules/agent-readiness-engine/src/rate",
+    "dist/modules/agent-readiness-engine/src/replay",
+    "dist/modules/agent-readiness-policy/",
+    "dist/modules/evidence-operations/",
+    "dist/packages/evidence-runtime/src/index"
+  ],
+  "dependencies": ["@actions/attest", "@actions/core", "almanac", "provenry", "zod"],
+  "bundle": {
+    "replaces": {
+      "make-fetch-happen": "fetch"
+    }
+  }
+}

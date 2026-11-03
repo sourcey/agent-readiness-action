@@ -1,0 +1,38 @@
+{
+  "code_distribution_license_policy_contract": "sourcey.code-distribution-license-policy/v1",
+  "package_license": "MIT",
+  "allowed_dependency_licenses": [
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "MIT",
+    "Unlicense"
+  ],
+  "reviewed_license_texts": [
+    {
+      "package": "@nodable/entities",
+      "version": "3.1.0",
+      "license": "MIT",
+      "path": "README.md",
+      "sha256": "sha256:7e3484a07c208b5c5813290a993244c6841efc3d4241c29a07ef948e8129a758",
+      "reason": "Upstream ships its MIT license notice in README.md and no separate license file; pulled by fast-xml-parser for safe submitted SVG inspection."
+    }
+  ],
+  "supplied_license_texts": [
+    {
+      "package": "err-code",
+      "version": "2.0.3",
+      "license": "MIT",
+      "path": "distributions/licenses/err-code-2.0.3.txt",
+      "reason": "Upstream declares MIT in package.json and ships no license text in its package or its repository at the release's commit; this is the standard MIT text naming the package's declared author. Pulled by @sigstore/sign through promise-retry."
+    },
+    {
+      "package": "@sigstore/verify",
+      "version": "3.1.1",
+      "license": "Apache-2.0",
+      "path": "distributions/licenses/sigstore-verify-3.1.1.txt",
+      "reason": "Upstream declares Apache-2.0 in package.json and its package ships no license text; this is sigstore-js's root LICENSE at the release's commit (1a8709a), byte-identical to the text @sigstore/core ships. Pulled by provenry's GitHub Actions verifiers."
+    }
+  ]
+}

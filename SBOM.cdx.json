@@ -1,0 +1,1563 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "type": "library",
+      "bom-ref": "urn:sourcey:code-distribution:agent-readiness-action",
+      "group": "@sourcey",
+      "name": "agent-readiness-action",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "Node.js",
+          "version": "22.23.3"
+        },
+        {
+          "type": "application",
+          "name": "npm",
+          "version": "12.2.0"
+        },
+        {
+          "type": "application",
+          "name": "TypeScript",
+          "version": "7.0.2"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "sourcey:distribution-definition-sha256",
+        "value": "sha256:bd294ad80f8806d7124a8b60ae7a902ffc91944a81d29c704fc3d8f4e5866647"
+      },
+      {
+        "name": "sourcey:toolchain-sha256",
+        "value": "sha256:d76460572878b84bf4b0995c5db1d0aab911ebe94f67368be602a62624b43b28"
+      },
+      {
+        "name": "sourcey:license-policy-sha256",
+        "value": "sha256:8af9408a6aa99084144722d97c73a813c2b2bff7190aecdf1da078948590c486"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40actions/attest@3.2.0",
+      "group": "@actions",
+      "name": "attest",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "3.2.0",
+      "purl": "pkg:npm/%40actions/attest@3.2.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "31da6a7f27e9e1da7b559b7d955066413967a4ad0f06b21749b9737ac78fe30e869f805b9796e949c27ef3383038c7d3cf5d38f703f349475ae57b53608665a1"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@actions/attest/-/attest-3.2.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40actions/core@3.0.1",
+      "group": "@actions",
+      "name": "core",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "3.0.1",
+      "purl": "pkg:npm/%40actions/core@3.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "6ba77f3706a19bd7e589519185d8687e8e341e31d06ac50fbac99ceef05fca4cbeed9f8fd80d49ebccf215568d70472573f49ef9e3b9f79a00af99f0108a0850"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@actions/core/-/core-3.0.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40actions/exec@3.0.0",
+      "group": "@actions",
+      "name": "exec",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "3.0.0",
+      "purl": "pkg:npm/%40actions/exec@3.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "eb11ffa6e4a83415dbef654f959566eef43eb2f42917203deaa74306f841f1e359384f0bb4f7fd2f8a00b1fccafdcac22fc619fb5f5f29856733add297e5f397"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@actions/exec/-/exec-3.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40actions/github@9.1.1",
+      "group": "@actions",
+      "name": "github",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "9.1.1",
+      "purl": "pkg:npm/%40actions/github@9.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b4be496d83816477349e01270ac68372bc948b321422543220cc32d56931f771f91f36c127b4db88fc763e7163070656d15874e4999f15985e704ea082561e80"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@actions/github/-/github-9.1.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40actions/http-client@3.0.2",
+      "group": "@actions",
+      "name": "http-client",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "3.0.2",
+      "purl": "pkg:npm/%40actions/http-client@3.0.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "24fdfc158629caabd4b33f8882a95cfc91ba60ef4f68abafaa3337886bda2ea16727b4c599c2f2cb6203ad8d1b234a8242e83c13d2be7a5bf964d7f0eb6649cc"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@actions/http-client/-/http-client-3.0.2.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40actions/http-client@4.0.1",
+      "group": "@actions",
+      "name": "http-client",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "4.0.1",
+      "purl": "pkg:npm/%40actions/http-client@4.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "f8dbddd4899a399052a0f6ec52d121bfed73f7d1f5db1ce7702933d1add1b9e848344f3515949ed904e3deebc03d37095ff482cd44074340f51ab3cc6eb3e2b6"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@actions/http-client/-/http-client-4.0.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40actions/io@3.0.2",
+      "group": "@actions",
+      "name": "io",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "3.0.2",
+      "purl": "pkg:npm/%40actions/io@3.0.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9d105c85c30cf902b5a5d8ceeff89dbbceab6c923960750a0af2acd0ac674986d57b7179d547c6c6e657e10cbf7d6969ea5ee0585c0892b3b337ea142b4de47f"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@actions/io/-/io-3.0.2.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40octokit/auth-token@6.0.0",
+      "group": "@octokit",
+      "name": "auth-token",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "6.0.0",
+      "purl": "pkg:npm/%40octokit/auth-token@6.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3f860904f74f4a9593435354e1761dbc7bd72490f133a630a52d056474603fb60591d571b16729586cbf355aa5000ecf70f0a731a7179519b5cb63c565158bff"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@octokit/auth-token/-/auth-token-6.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40octokit/core@7.0.8",
+      "group": "@octokit",
+      "name": "core",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "7.0.8",
+      "purl": "pkg:npm/%40octokit/core@7.0.8",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "2fbcbc79873e030c46af63d6238585b75546e13889eba736e810f5ea65e9608957c46d1232280cd7e9b86934a563206be41950b06025cfcb830a864de1210c72"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@octokit/core/-/core-7.0.8.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40octokit/endpoint@11.0.5",
+      "group": "@octokit",
+      "name": "endpoint",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "11.0.5",
+      "purl": "pkg:npm/%40octokit/endpoint@11.0.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "8976bae781f7c8569f17f89e1e4ba47db816a36ae65c3d9c783d193adacf870d5b737143721d5df4dfd336cd05435fdc21bc1bee4b29517f23cc8b3c9f36fd0d"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@octokit/endpoint/-/endpoint-11.0.5.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40octokit/graphql@9.0.5",
+      "group": "@octokit",
+      "name": "graphql",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "9.0.5",
+      "purl": "pkg:npm/%40octokit/graphql@9.0.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "6edfe19b4dcb794e95cbb1704eb9240bda775c64ff941c0296094cab10527b9fead04e427494d7780a84234be5c3cf7f2c5fc6eadaf24c81fc1e2ad9de9acc56"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@octokit/graphql/-/graphql-9.0.5.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40octokit/openapi-types@29.0.1",
+      "group": "@octokit",
+      "name": "openapi-types",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "29.0.1",
+      "purl": "pkg:npm/%40octokit/openapi-types@29.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "f6a58e305371c4ba24111726b38dab5343d32ea42656cee0e44e354c8e2608ec66a456b20f5adf0bb5f138be79706f4c0592c5942df506b477ee6c8c29aaddc2"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@octokit/openapi-types/-/openapi-types-29.0.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40octokit/plugin-paginate-rest@14.0.0",
+      "group": "@octokit",
+      "name": "plugin-paginate-rest",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "14.0.0",
+      "purl": "pkg:npm/%40octokit/plugin-paginate-rest@14.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "7cd55113bb9f262000dd752b85ada8993037f4ce885c873a18864bbe56ec9bc40e40262fa6afcb90c346c85941d5df214c3cec0176b738ab726dd30062c57f7f"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@octokit/plugin-paginate-rest/-/plugin-paginate-rest-14.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40octokit/openapi-types@27.0.0",
+      "group": "@octokit",
+      "name": "openapi-types",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "27.0.0",
+      "purl": "pkg:npm/%40octokit/openapi-types@27.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "c21add92d56cd61ea0b51fb4f7e42c364dbe14efb8f63ea06b5739e5866e75f106fa828956f24b422df390e9b92638945c06a058adad23691318a27662cecc18"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@octokit/openapi-types/-/openapi-types-27.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40octokit/types@16.0.0",
+      "group": "@octokit",
+      "name": "types",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "16.0.0",
+      "purl": "pkg:npm/%40octokit/types@16.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b0aabef6bd4c9b879f5d6d450a4ee1152789a3840aade2ffb536d1d2bcffab1febd4e6b6555f372d303f1ff32e08e5fbb8220999055128171b996a324a30274a"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@octokit/types/-/types-16.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40octokit/plugin-rest-endpoint-methods@17.0.0",
+      "group": "@octokit",
+      "name": "plugin-rest-endpoint-methods",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "17.0.0",
+      "purl": "pkg:npm/%40octokit/plugin-rest-endpoint-methods@17.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "079c82c8894e2453ea5147a20f4727049c1624ef25909b3977cfb37bd4033fa4af7e25d2cf5045fbdd7ed0c788d5ddb2c603a153f3be0afb6267d8d290784503"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@octokit/plugin-rest-endpoint-methods/-/plugin-rest-endpoint-methods-17.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40octokit/plugin-retry@8.1.1",
+      "group": "@octokit",
+      "name": "plugin-retry",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "8.1.1",
+      "purl": "pkg:npm/%40octokit/plugin-retry@8.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "54256f67f475faedd6ba2056a4d6af674998e1a689340b0436ba413fd68b491d90c8ea5081dec384ce63e005bbcf8310a6725883004f7f45ea3d0a0d051750c2"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@octokit/plugin-retry/-/plugin-retry-8.1.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40octokit/openapi-types@28.0.0",
+      "group": "@octokit",
+      "name": "openapi-types",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "28.0.0",
+      "purl": "pkg:npm/%40octokit/openapi-types@28.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d2b1722eec87bc88fabae656b83b25c64a3015874f5e834891e02fe1bdbb7739b64dfe2f1965e73ec31cc6ceddeb990b74c11180fdf07350043e5a8ccfc7b571"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@octokit/openapi-types/-/openapi-types-28.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40octokit/types@17.0.0",
+      "group": "@octokit",
+      "name": "types",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "17.0.0",
+      "purl": "pkg:npm/%40octokit/types@17.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0723f5bfb60be5232f7853cfefeb23d3f66e58238e83f0a1b3835a7ce329aba58d20cfe17466344bb0b44c2183056bb568698ec6650884cc7770ef88770619d5"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@octokit/types/-/types-17.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40octokit/request@10.0.16",
+      "group": "@octokit",
+      "name": "request",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "10.0.16",
+      "purl": "pkg:npm/%40octokit/request@10.0.16",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "034cd61a31f321221bfbd71c1bcb3476aecb28ee7356924b4480a38146feb09c445aa9fc4541c1d6b0f7004e75f8f102bd71c8c6a675555bece1f1d3483f6751"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@octokit/request/-/request-10.0.16.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40octokit/request-error@7.1.2",
+      "group": "@octokit",
+      "name": "request-error",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "7.1.2",
+      "purl": "pkg:npm/%40octokit/request-error@7.1.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5d946e4f7c59f380f781812b2350d9be1277ddd096555eaecc1b5691a041e13bc0fcbe9e39e4d9a1dc4b155078e1b044128def131ef2d3451f5f5b412ebb4b46"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@octokit/request-error/-/request-error-7.1.2.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40octokit/types@18.0.0",
+      "group": "@octokit",
+      "name": "types",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "18.0.0",
+      "purl": "pkg:npm/%40octokit/types@18.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "97a6c0178dcf371909a7a83e5b83e3a144929311e8997c369ceba6e424dfb49cf5365577beef773489a0398b4b7fa09b0546f98fe7e2bb35b43cf4392534af64"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@octokit/types/-/types-18.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40sigstore/bundle@3.1.0",
+      "group": "@sigstore",
+      "name": "bundle",
+      "licenses": [
+        {
+          "expression": "Apache-2.0"
+        }
+      ],
+      "version": "3.1.0",
+      "purl": "pkg:npm/%40sigstore/bundle@3.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "326d44dff0a60c30b3de70e114a4ee61d078ec475115140c384fc401b886d4c256efbff0d5bdcfed0c7b252ad526cf0f7f038b39570a4021c4ac8c024f23db6a"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@sigstore/bundle/-/bundle-3.1.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40sigstore/core@2.0.0",
+      "group": "@sigstore",
+      "name": "core",
+      "licenses": [
+        {
+          "expression": "Apache-2.0"
+        }
+      ],
+      "version": "2.0.0",
+      "purl": "pkg:npm/%40sigstore/core@2.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9d8c5a49bfccb65488f8959cc131d0c7236659e5ab517249fc6e2588bac61bbfad4b8bc0cfa2c5df1457a8b1fac0f2155286507a5d85b3875d2f1e0d0a988862"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@sigstore/core/-/core-2.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40sigstore/protobuf-specs@0.4.3",
+      "group": "@sigstore",
+      "name": "protobuf-specs",
+      "licenses": [
+        {
+          "expression": "Apache-2.0"
+        }
+      ],
+      "version": "0.4.3",
+      "purl": "pkg:npm/%40sigstore/protobuf-specs@0.4.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "7e4db38c3f75d7b44bf418ea13017b7f0bfb43f3fdc86b0c578314259fc3a1c69027afb7a4aafeb3206ad68c14e50e6a1b0e4251b5f39bee3227625544341e48"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@sigstore/protobuf-specs/-/protobuf-specs-0.4.3.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40sigstore/sign@3.1.0",
+      "group": "@sigstore",
+      "name": "sign",
+      "licenses": [
+        {
+          "expression": "Apache-2.0"
+        }
+      ],
+      "version": "3.1.0",
+      "purl": "pkg:npm/%40sigstore/sign@3.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "927ce399a3873a8bf552becdff3e01d683ea674417e607947e1ad56aa565bbe865d040282f8a3e97431250b20d703e460967b7674f9824ef2e7aceaf1655b463"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@sigstore/sign/-/sign-3.1.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40sigstore/verify@3.1.1",
+      "group": "@sigstore",
+      "name": "verify",
+      "licenses": [
+        {
+          "expression": "Apache-2.0"
+        }
+      ],
+      "version": "3.1.1",
+      "purl": "pkg:npm/%40sigstore/verify@3.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "aafefe1b727671ceb0c058f7c8abd739a9b3aa13304a4d6880f1a68694bc89796570fac968820103ee076edb651d5bb5a6a5937666821ff584ed4382e7591da0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@sigstore/verify/-/verify-3.1.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40sigstore/bundle@4.0.0",
+      "group": "@sigstore",
+      "name": "bundle",
+      "licenses": [
+        {
+          "expression": "Apache-2.0"
+        }
+      ],
+      "version": "4.0.0",
+      "purl": "pkg:npm/%40sigstore/bundle@4.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3700a5e58d15e838b435ec6f913a9da157e68d3690c282ccdb7eabf3d284a231a6abf8cc96cf12fb36fbc8ec003dd5ef6f07ca0e53fe9665e000be2f292413f8"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@sigstore/bundle/-/bundle-4.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40sigstore/core@3.2.1",
+      "group": "@sigstore",
+      "name": "core",
+      "licenses": [
+        {
+          "expression": "Apache-2.0"
+        }
+      ],
+      "version": "3.2.1",
+      "purl": "pkg:npm/%40sigstore/core@3.2.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a91b313e70ab6c2fe9b9e806c4abb29df9f180b887a964adad28f192807860aaaadd9dece1cc99ca3e3665d5850046e534feb90beac11fc12e4441c85e88bcde"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@sigstore/core/-/core-3.2.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40sigstore/protobuf-specs@0.5.2",
+      "group": "@sigstore",
+      "name": "protobuf-specs",
+      "licenses": [
+        {
+          "expression": "Apache-2.0"
+        }
+      ],
+      "version": "0.5.2",
+      "purl": "pkg:npm/%40sigstore/protobuf-specs@0.5.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "490aaf14cb7857bf1f7637037585fa1db89548e47840add983009ad8a3aca290203c81f2d6b539503526ccb974dabe68cb26987181d1d61a700d193fc947be33"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@sigstore/protobuf-specs/-/protobuf-specs-0.5.2.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/almanac@0.0.0",
+      "name": "almanac",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "0.0.0",
+      "purl": "pkg:npm/almanac@0.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ac85180b36db9398f3f43478c3a62085edf332c31f1f33c017c19b4beed7604ea7902430a9a9cd6e31f45614ca4630833838abab94ce80a5b98dbe3826001601"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://artifacts.sourcey.com/almanac/sha256-b2686d7a7bad39317886c934402a33ef2303ebf97633e491ae6db4a18e5c8894/almanac-sha256-b2686d7a7bad39317886c934402a33ef2303ebf97633e491ae6db4a18e5c8894.tar.gz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40noble/hashes@2.4.0",
+      "group": "@noble",
+      "name": "hashes",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "2.4.0",
+      "purl": "pkg:npm/%40noble/hashes@2.4.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5f95da5566480424fb1c76469b923b6505c3c0b1be6c65ee4ab310016fbb66f97cee1d6499cd5907555244972951fa14ac6429e05928c66e6467e32cf9a5be78"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@noble/hashes/-/hashes-2.4.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/before-after-hook@4.0.0",
+      "name": "before-after-hook",
+      "licenses": [
+        {
+          "expression": "Apache-2.0"
+        }
+      ],
+      "version": "4.0.0",
+      "purl": "pkg:npm/before-after-hook@4.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "abab51dd13ea201d693224d1305719c2e1b94fcbf0a7ebd4bc41b4bee23a07e462921e417cfa767d0f3673ddb914eb3e6f495c150f0216b2fe29b8a57d916139"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/before-after-hook/-/before-after-hook-4.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/bottleneck@2.19.5",
+      "name": "bottleneck",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "2.19.5",
+      "purl": "pkg:npm/bottleneck@2.19.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "54788d09b23594a765e38b46ae135f53796ea744e3fd904c241e7fd996cd5d108fb9108eede7769a070ae2bd7bcbe281d847ee62e45a565c0d6c079a5864a96f"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/bottleneck/-/bottleneck-2.19.5.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/content-type@3.1.1",
+      "name": "content-type",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "3.1.1",
+      "purl": "pkg:npm/content-type@3.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "196e2a52c7c5a39f5dd076d489b0e55afe703f3faf00071a4d66ca22e2827f42640bbc16912c9ff1fd772295e7e4991e3250763fc893492223c17963a2b836bc"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/content-type/-/content-type-3.1.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/entities@8.1.0",
+      "name": "entities",
+      "licenses": [
+        {
+          "expression": "BSD-2-Clause"
+        }
+      ],
+      "version": "8.1.0",
+      "purl": "pkg:npm/entities@8.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9312fb9ac21f7d2ba1f5a68500c0fbaf1008b9344c00731e06d8075b6c94756c3bdf664d87831e86417681d8efb5d9a29246883fd6c50c324e3e5b2f9bb6afac"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/entities/-/entities-8.1.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/err-code@2.0.3",
+      "name": "err-code",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "2.0.3",
+      "purl": "pkg:npm/err-code@2.0.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d9b9a546934a0714ff09198f3a5c88490a4d8fea92798bdcca6fee4f4271d9b30e94a2ed4b2d5998bb95c5210a2b2a2bfcde7286fa7f6621b5a04dc311831214"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/err-code/-/err-code-2.0.3.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/jose@5.10.0",
+      "name": "jose",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "5.10.0",
+      "purl": "pkg:npm/jose@5.10.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b3edc097fa7d837d88abea2a5f1916fffee393656283a145d4216acd55e84d45eddaacfcf5859b2fe3b04b5ecd15812fc42df99f414a7863b62c6612c5e3361a"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/jose/-/jose-5.10.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/json-with-bigint@3.5.12",
+      "name": "json-with-bigint",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "3.5.12",
+      "purl": "pkg:npm/json-with-bigint@3.5.12",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "bb06c5ff0492b8e802eeaaa5ab6ed7a7907a6b630756e837b7489d65d4eabb4267945be026e1fb8eef8a024fc9d3a0bb19f868632da09dbf70cf620da9c9deef"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/json-with-bigint/-/json-with-bigint-3.5.12.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/parse5@8.0.1",
+      "name": "parse5",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "8.0.1",
+      "purl": "pkg:npm/parse5@8.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "cf57bf1cc1bdd286d219e89d9658b7863edc6e8728bb4ff06b91da72f237012c77e0f79c36335079a1cda395886695a87cdf64824a95d6ae58bd77b71741683f"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/parse5/-/parse5-8.0.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/proc-log@5.0.0",
+      "name": "proc-log",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "5.0.0",
+      "purl": "pkg:npm/proc-log@5.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "033c33be5f741da174682cf526b0dd5d0ca415a91248d3da3e8899f5f9b9a8920c1e2a036448bb380751c129baad2a0fb58dd0bad9e6dcbee882683775cfb06d"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/proc-log/-/proc-log-5.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/promise-retry@2.0.1",
+      "name": "promise-retry",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "2.0.1",
+      "purl": "pkg:npm/promise-retry@2.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "cbe58a165051f011979ec3652071463d99b20dfdc314ca0b85a7e5027c99815eab1bac6ef89c1eb13a3643d47a5f0626b66c001429009377b7e6311da1e87fde"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/promise-retry/-/promise-retry-2.0.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/provenry@0.3.0",
+      "name": "provenry",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "0.3.0",
+      "purl": "pkg:npm/provenry@0.3.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "18012f90894ca376cebfa83fae13c24f9aa538fa32442f77a1e29cd6c40e4e0e468b8174d6c5a596cd73e5df0078865eef48b08247529edc03598868712360a4"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/provenry/-/provenry-0.3.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/retry@0.12.0",
+      "name": "retry",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "0.12.0",
+      "purl": "pkg:npm/retry@0.12.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "f4b9224f08d487aad3e79e43b44f6b4d7f81281c8f7eb333100b67944b5d130af73647dfc228a1a9ed9b5800e0f8e4118edf6097a20276607f6450c2180b52a3"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/retry/-/retry-0.12.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/tunnel@0.0.6",
+      "name": "tunnel",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "0.0.6",
+      "purl": "pkg:npm/tunnel@0.0.6",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "d61fcb9eaf726a3298d8f11b05a74f5e3dd5c6c0c3bbce383a7680a39d9456623322fc30b413c8b8dbe48eecc19535a97c9c946c6ddecf42920626d0923e288e"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/tunnel/-/tunnel-0.0.6.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/tweetnacl@1.0.3",
+      "name": "tweetnacl",
+      "licenses": [
+        {
+          "expression": "Unlicense"
+        }
+      ],
+      "version": "1.0.3",
+      "purl": "pkg:npm/tweetnacl@1.0.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "eabb7e44deda3a2d6718cc82e176b90dd622ba497651609b7097eded887145e046403ece00cf0f6f1c3a60ca38af676234403c1449aedf660e9fdae16a2139cb"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/tweetnacl/-/tweetnacl-1.0.3.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/undici@6.29.1",
+      "name": "undici",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "6.29.1",
+      "purl": "pkg:npm/undici@6.29.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "12f46552dfd0a8012f5dd41e44c6147f0390b1fce90f3b7292b1b6a3018413fac1381a18bfdb85dfd673b0d0e1e254c51e14ebd973998ca91882e783d7666618"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/undici/-/undici-6.29.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/universal-user-agent@7.0.3",
+      "name": "universal-user-agent",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "7.0.3",
+      "purl": "pkg:npm/universal-user-agent@7.0.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4e69c400402c04955933f0000c42ec2bbea5967c1c7fdbcc2ae3f3f097e53b57eb3bc2dc862b6bd1f35a37d77e029d018cab6a5aa77f275eea7839d787c08bd8"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/universal-user-agent/-/universal-user-agent-7.0.3.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/zod@4.6.5",
+      "name": "zod",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "4.6.5",
+      "purl": "pkg:npm/zod@4.6.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "bf997f6855d941e6a2e1ac0b6cea52a0779c13d52232b9dfc7be6d1172e33689d754047143998e7a2a538d1394721b3350d0aa9c4fa1a8032e8d1b111ecbadd9"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/zod/-/zod-4.6.5.tgz"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "urn:sourcey:code-distribution:agent-readiness-action",
+      "dependsOn": [
+        "pkg:npm/%40actions/attest@3.2.0",
+        "pkg:npm/%40actions/core@3.0.1",
+        "pkg:npm/almanac@0.0.0",
+        "pkg:npm/provenry@0.3.0",
+        "pkg:npm/zod@4.6.5"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40actions/attest@3.2.0",
+      "dependsOn": [
+        "pkg:npm/%40actions/core@3.0.1",
+        "pkg:npm/%40actions/github@9.1.1",
+        "pkg:npm/%40actions/http-client@4.0.1",
+        "pkg:npm/%40octokit/plugin-retry@8.1.1",
+        "pkg:npm/%40sigstore/bundle@3.1.0",
+        "pkg:npm/%40sigstore/sign@3.1.0",
+        "pkg:npm/jose@5.10.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40actions/core@3.0.1",
+      "dependsOn": [
+        "pkg:npm/%40actions/exec@3.0.0",
+        "pkg:npm/%40actions/http-client@4.0.1"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40actions/exec@3.0.0",
+      "dependsOn": [
+        "pkg:npm/%40actions/io@3.0.2"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40actions/github@9.1.1",
+      "dependsOn": [
+        "pkg:npm/%40actions/http-client@3.0.2",
+        "pkg:npm/%40octokit/core@7.0.8",
+        "pkg:npm/%40octokit/plugin-paginate-rest@14.0.0",
+        "pkg:npm/%40octokit/plugin-rest-endpoint-methods@17.0.0",
+        "pkg:npm/%40octokit/request-error@7.1.2",
+        "pkg:npm/%40octokit/request@10.0.16",
+        "pkg:npm/undici@6.29.1"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40actions/http-client@3.0.2",
+      "dependsOn": [
+        "pkg:npm/tunnel@0.0.6",
+        "pkg:npm/undici@6.29.1"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40actions/http-client@4.0.1",
+      "dependsOn": [
+        "pkg:npm/tunnel@0.0.6",
+        "pkg:npm/undici@6.29.1"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40actions/io@3.0.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/%40octokit/auth-token@6.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/%40octokit/core@7.0.8",
+      "dependsOn": [
+        "pkg:npm/%40octokit/auth-token@6.0.0",
+        "pkg:npm/%40octokit/graphql@9.0.5",
+        "pkg:npm/%40octokit/request-error@7.1.2",
+        "pkg:npm/%40octokit/request@10.0.16",
+        "pkg:npm/%40octokit/types@18.0.0",
+        "pkg:npm/before-after-hook@4.0.0",
+        "pkg:npm/universal-user-agent@7.0.3"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40octokit/endpoint@11.0.5",
+      "dependsOn": [
+        "pkg:npm/%40octokit/types@18.0.0",
+        "pkg:npm/universal-user-agent@7.0.3"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40octokit/graphql@9.0.5",
+      "dependsOn": [
+        "pkg:npm/%40octokit/request@10.0.16",
+        "pkg:npm/%40octokit/types@18.0.0",
+        "pkg:npm/universal-user-agent@7.0.3"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40octokit/openapi-types@29.0.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/%40octokit/plugin-paginate-rest@14.0.0",
+      "dependsOn": [
+        "pkg:npm/%40octokit/types@16.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40octokit/openapi-types@27.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/%40octokit/types@16.0.0",
+      "dependsOn": [
+        "pkg:npm/%40octokit/openapi-types@27.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40octokit/plugin-rest-endpoint-methods@17.0.0",
+      "dependsOn": [
+        "pkg:npm/%40octokit/types@16.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40octokit/plugin-retry@8.1.1",
+      "dependsOn": [
+        "pkg:npm/%40octokit/request-error@7.1.2",
+        "pkg:npm/%40octokit/types@17.0.0",
+        "pkg:npm/bottleneck@2.19.5"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40octokit/openapi-types@28.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/%40octokit/types@17.0.0",
+      "dependsOn": [
+        "pkg:npm/%40octokit/openapi-types@28.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40octokit/request@10.0.16",
+      "dependsOn": [
+        "pkg:npm/%40octokit/endpoint@11.0.5",
+        "pkg:npm/%40octokit/request-error@7.1.2",
+        "pkg:npm/%40octokit/types@18.0.0",
+        "pkg:npm/content-type@3.1.1",
+        "pkg:npm/json-with-bigint@3.5.12",
+        "pkg:npm/universal-user-agent@7.0.3"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40octokit/request-error@7.1.2",
+      "dependsOn": [
+        "pkg:npm/%40octokit/types@18.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40octokit/types@18.0.0",
+      "dependsOn": [
+        "pkg:npm/%40octokit/openapi-types@29.0.1"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40sigstore/bundle@3.1.0",
+      "dependsOn": [
+        "pkg:npm/%40sigstore/protobuf-specs@0.4.3"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40sigstore/core@2.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/%40sigstore/protobuf-specs@0.4.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/%40sigstore/sign@3.1.0",
+      "dependsOn": [
+        "pkg:npm/%40sigstore/bundle@3.1.0",
+        "pkg:npm/%40sigstore/core@2.0.0",
+        "pkg:npm/%40sigstore/protobuf-specs@0.4.3",
+        "pkg:npm/proc-log@5.0.0",
+        "pkg:npm/promise-retry@2.0.1"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40sigstore/verify@3.1.1",
+      "dependsOn": [
+        "pkg:npm/%40sigstore/bundle@4.0.0",
+        "pkg:npm/%40sigstore/core@3.2.1",
+        "pkg:npm/%40sigstore/protobuf-specs@0.5.2"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40sigstore/bundle@4.0.0",
+      "dependsOn": [
+        "pkg:npm/%40sigstore/protobuf-specs@0.5.2"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40sigstore/core@3.2.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/%40sigstore/protobuf-specs@0.5.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/almanac@0.0.0",
+      "dependsOn": [
+        "pkg:npm/%40noble/hashes@2.4.0",
+        "pkg:npm/tweetnacl@1.0.3",
+        "pkg:npm/zod@4.6.5"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40noble/hashes@2.4.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/before-after-hook@4.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/bottleneck@2.19.5",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/content-type@3.1.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/entities@8.1.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/err-code@2.0.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/jose@5.10.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/json-with-bigint@3.5.12",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/parse5@8.0.1",
+      "dependsOn": [
+        "pkg:npm/entities@8.1.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/proc-log@5.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/promise-retry@2.0.1",
+      "dependsOn": [
+        "pkg:npm/err-code@2.0.3",
+        "pkg:npm/retry@0.12.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/provenry@0.3.0",
+      "dependsOn": [
+        "pkg:npm/%40sigstore/bundle@4.0.0",
+        "pkg:npm/%40sigstore/core@3.2.1",
+        "pkg:npm/%40sigstore/protobuf-specs@0.5.2",
+        "pkg:npm/%40sigstore/verify@3.1.1",
+        "pkg:npm/parse5@8.0.1",
+        "pkg:npm/zod@4.6.5"
+      ]
+    },
+    {
+      "ref": "pkg:npm/retry@0.12.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/tunnel@0.0.6",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/tweetnacl@1.0.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/undici@6.29.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/universal-user-agent@7.0.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/zod@4.6.5",
+      "dependsOn": []
+    }
+  ]
+}
