@@ -12,14 +12,18 @@ the job's assertions itself, and the report card shows the job verified.
 ## Add the workflow
 
 Add one workflow to a repository you control, naming the profile and binding
-your report card shows, at a released commit of this repository:
+your report card shows, at a released commit of this repository. The card shows
+the job verified with the date of the last run that did it. The workflow runs
+once a month by default, and you can run it from the Actions tab whenever you
+like. Take the workflow from your report card's verify page: it gives your job
+a day and a time of its own, so runs spread across the month.
 
 ```yaml
 name: Agent Readiness
 
 on:
   schedule:
-    - cron: "17 6 * * *"
+    - cron: "<minute> <hour> <day> * *"
   workflow_dispatch:
 
 jobs:

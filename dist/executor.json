@@ -1,5 +1,5 @@
 {
   "name": "sourcey-agent-readiness-action",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "executor_digest": "sha256:b4a295b02fba65dbf8db731213f36404e412278f9bbfb6dfd7314e80527a4f56"
 }

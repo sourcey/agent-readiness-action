@@ -1,6 +1,12 @@
 # Changelog
 
-Release notes are maintained per tagged version in GitHub Releases.
+Each version is a tag of this repository, and a workflow pins the tag's full commit.
+
+## 1.0.1
+
+- The workflow runs once a month by default, not daily, on a day and at a time
+  its report card's verify page gives the job. The card shows the job verified
+  with the date of the last run that did it.
 
 ## 1.0.0
 
