@@ -34078,6 +34078,7 @@ var Summary = class {
   }
 };
 var _summary = new Summary();
+var summary = _summary;
 
 // node_modules/@actions/core/lib/platform.js
 import os2 from "os";
@@ -56791,6 +56792,7 @@ var agentReadinessAccountReadingSchema = external_exports.object({
   operation_id: agentReadinessScopeKeySchema,
   spec: agentReadinessSpecReadingSchema
 }).strict();
+var agentReadinessVendorReadingSchema = external_exports.enum(["vendor", "third_party", "unanswered"]);
 var agentReadinessRunnerSchema = external_exports.object({
   action: external_exports.object({
     version: external_exports.string().regex(/^[0-9]+\.[0-9]+\.[0-9]+$/u),
@@ -56799,8 +56801,7 @@ var agentReadinessRunnerSchema = external_exports.object({
   executor_digest: agentReadinessDigestSchema,
   bundle_digest: agentReadinessDigestSchema,
   vendor: external_exports.object({
-    /** The vendor's own run; a third party's; or neither known, when a domain did not answer. */
-    reading: external_exports.enum(["vendor", "third_party", "unanswered"]),
+    reading: agentReadinessVendorReadingSchema,
     /** What each of the Entity's domains answered: its TXT values, or null when DNS did not answer. */
     domains: external_exports.array(external_exports.object({
       domain: agentReadinessHostnameSchema,
@@ -57009,6 +57010,11 @@ var agentReadinessProofFailureSchema = external_exports.discriminatedUnion("kind
     status: external_exports.union([external_exports.literal(401), external_exports.literal(403)])
   }).strict()
 ]);
+var agentReadinessRunOutcomeSchema = external_exports.discriminatedUnion("kind", [
+  external_exports.object({ kind: external_exports.literal("done") }).strict(),
+  external_exports.object({ kind: external_exports.literal("failed"), failure: agentReadinessProofFailureSchema }).strict(),
+  external_exports.object({ kind: external_exports.literal("unproven") }).strict()
+]);
 var agentReadinessStepEvidenceSchema = external_exports.discriminatedUnion("kind", [
   external_exports.object({
     kind: external_exports.literal("exchange"),
@@ -57074,14 +57080,16 @@ var agentReadinessJobResultSchema = external_exports.object({
 
 // dist/contracts/agent-readiness/src/verified-run.js
 var AGENT_READINESS_RUN_TOKEN_AUDIENCE = "https://api.sourcey.com";
+var agentReadinessActionReleaseSchema = external_exports.object({
+  version: external_exports.string().regex(/^[0-9]+\.[0-9]+\.[0-9]+$/u),
+  commit: external_exports.string().regex(/^[0-9a-f]{40}$/u),
+  executor_digest: agentReadinessDigestSchema
+}).strict();
 var agentReadinessActionReleasesSchema = external_exports.object({
   agent_readiness_action_releases_contract: external_exports.literal("sourcey.agent-readiness-action-releases/v1"),
-  releases: external_exports.array(external_exports.object({
-    version: external_exports.string().regex(/^[0-9]+\.[0-9]+\.[0-9]+$/u),
-    commit: external_exports.string().regex(/^[0-9a-f]{40}$/u),
-    executor_digest: agentReadinessDigestSchema
-  }).strict()).max(64)
+  releases: external_exports.array(agentReadinessActionReleaseSchema).max(64)
 }).strict();
+var agentReadinessActionPinSchema = agentReadinessActionReleaseSchema.pick({ version: true, commit: true }).strict();
 var AGENT_READINESS_RUN_PREDICATE_TYPE = "https://sourcey.com/agent-readiness/run-results/v1";
 var AGENT_READINESS_RUN_RESULTS_SUBJECT = "results";
 var AGENT_READINESS_RUN_SUBMISSION_MAX_BYTES = 16 * 1024 * 1024;
@@ -57197,7 +57205,13 @@ var agentReadinessIntakeSchema = external_exports.discriminatedUnion("state", [
     intake_id: agentReadinessIntakeIdSchema,
     challenge_id: agentReadinessChallengeIdSchema,
     state: external_exports.literal("accepted"),
-    run_digest: agentReadinessDigestSchema
+    run_digest: agentReadinessDigestSchema,
+    /** What the run showed about its job, by the tests the card applies. */
+    outcome: agentReadinessRunOutcomeSchema,
+    /** Whether DNS names the run's repository as the vendor's (D5). */
+    vendor: agentReadinessVendorReadingSchema,
+    /** The report card the run counts toward; null once its listing is no longer published. */
+    card_url: external_exports.url({ protocol: /^https$/u }).nullable()
   }).strict(),
   external_exports.object({
     intake_id: agentReadinessIntakeIdSchema,
@@ -58883,7 +58897,7 @@ function createCredentialCustody(input2) {
     const stored = HANDLE_ID.test(handleId) ? await store.read(handleId) : null;
     return stored ? { stored, secret: keys.unseal(stored.grant, stored.secret) } : null;
   }
-  async function keepIssued(exchange, rules, secretFields) {
+  async function keepIssued(exchange, rules) {
     const { record: record2, body: body2 } = exchange;
     const plain = { outcome: { exchange, kept: [], redacted: [], keepFailure: null }, secrets: [] };
     if (record2.outcome !== "responded" || body2 === null)
@@ -58919,8 +58933,6 @@ function createCredentialCustody(input2) {
       if (values.some((value) => value.length < MINIMUM_SECRET_LENGTH))
         unreadable = true;
     };
-    for (const pointer of secretFields)
-      remove(pointer, "field");
     for (const rule of rules) {
       if (!successful) {
         remove(rule.pointer, rule.placement.scheme);
@@ -59017,11 +59029,10 @@ function createCredentialCustody(input2) {
           throw new CredentialRefusedError(handleId, "unknown");
         heldSecrets.push(...echoValues(found.secret, found.stored.grant.placement.scheme));
       }
-      const secretFields = external_exports.array(pointerSchema2).max(MAXIMUM_EXCHANGE_HANDLES).parse(asked.secretFields ?? []);
-      const issuing = [
-        ...rules.map(({ pointer, placement: placement2 }) => ({ pointer, scheme: placement2.scheme })),
-        ...secretFields.map((pointer) => ({ pointer, scheme: "field" }))
-      ];
+      const issuing = rules.map(({ pointer, placement: placement2 }) => ({
+        pointer,
+        scheme: placement2.scheme
+      }));
       const exchange = await performHttpExchange({
         request: asked.request,
         credentials,
@@ -59032,7 +59043,7 @@ function createCredentialCustody(input2) {
         ...issuing.length > 0 ? { issuedSecrets: (body2) => issuedSecretsIn(body2, issuing) } : {},
         now: input2.now
       });
-      const issued = issuing.length === 0 ? { outcome: { exchange, kept: [], redacted: [], keepFailure: null }, secrets: [] } : await keepIssued(exchange, rules, secretFields);
+      const issued = issuing.length === 0 ? { outcome: { exchange, kept: [], redacted: [], keepFailure: null }, secrets: [] } : await keepIssued(exchange, rules);
       return withholdEchoes(withhold(issued.outcome, asked), [
         ...credentials.flatMap(({ secret, scheme }) => echoValues(secret, scheme)),
         ...heldSecrets,
@@ -59538,7 +59549,7 @@ var CredentialCustodyAbsentError = class extends Error {
 };
 async function journaledExchange(input2) {
   const { custody, exchange } = input2;
-  const credentialed = exchange.handles.length > 0 || (exchange.keep ?? []).length > 0 || (exchange.scrub ?? []).length > 0 || (exchange.secretFields ?? []).length > 0;
+  const credentialed = exchange.handles.length > 0 || (exchange.keep ?? []).length > 0 || (exchange.scrub ?? []).length > 0;
   if (credentialed && !custody)
     throw new CredentialCustodyAbsentError(input2.key);
   const request3 = exchangeRequestDigest(exchange);
@@ -59567,8 +59578,8 @@ async function journaledExchange(input2) {
 function uncredentialedExchange(sender) {
   return {
     async exchange(asked) {
-      if (asked.handles.length > 0 || (asked.keep ?? []).length > 0 || (asked.scrub ?? []).length > 0 || (asked.secretFields ?? []).length > 0) {
-        throw new Error("An uncredentialed exchange attaches, keeps and scrubs no credential, and removes no secret.");
+      if (asked.handles.length > 0 || (asked.keep ?? []).length > 0 || (asked.scrub ?? []).length > 0) {
+        throw new Error("An uncredentialed exchange attaches, keeps and scrubs no credential.");
       }
       return withhold({
         exchange: await performHttpExchange({
@@ -59608,7 +59619,6 @@ function exchangeRequestDigest(asked) {
     ...asked.withhold && asked.withhold.length > 0 ? { withhold: [...asked.withhold] } : {},
     ...asked.shapeSuccess === true ? { shape_success: true } : {},
     ...asked.scrub && asked.scrub.length > 0 ? { scrub: [...asked.scrub] } : {},
-    ...asked.secretFields && asked.secretFields.length > 0 ? { secret_fields: [...asked.secretFields] } : {},
     ...asked.shapeLiterals && asked.shapeLiterals.length > 0 ? {
       shape_literals: asked.shapeLiterals.map(({ pointer, values }) => ({
         pointer,
@@ -59664,6 +59674,120 @@ async function readExchangeOutcome(content, outcomeDigest) {
     redacted: outcome.redacted,
     keepFailure: outcome.keep_failure
   };
+}
+
+// node_modules/almanac/dist/modules/custody/src/oauth.js
+function oauthRetirements(request3, outcome, token) {
+  const usable = /* @__PURE__ */ new Set([
+    ...token.kind === "issued" ? [token.access.handle_id] : [],
+    ...token.refresh ? [token.refresh.handle_id] : []
+  ]);
+  return [
+    ...outcome.kept.filter(({ handle_id }) => !usable.has(handle_id)).map(({ handle_id }) => handle_id),
+    ...token.refresh && request3.grant.kind === "refresh_token" ? [request3.grant.credential.handle_id] : []
+  ];
+}
+function oauthTokenRequest(input2) {
+  const endpoint2 = external_exports.url({ protocol: /^https$/u }).parse(input2.tokenEndpoint);
+  const url2 = new URL(endpoint2);
+  if (url2.username || url2.password || url2.hash)
+    throw new Error("A token endpoint carries no credential or fragment.");
+  const scopes = external_exports.array(external_exports.string().regex(/^[\x21\x23-\x5B\x5D-\x7E]{1,128}$/u)).max(32).parse(input2.scopes ?? []);
+  if (new Set(scopes).size !== scopes.length)
+    throw new Error("OAuth scopes are unique.");
+  if (input2.grant.kind === "client_credentials" && input2.client.kind === "public") {
+    throw new Error("Client credentials require a confidential client.");
+  }
+  const form = new URLSearchParams({ grant_type: input2.grant.kind });
+  if (scopes.length > 0)
+    form.set("scope", scopes.join(" "));
+  const handles = [];
+  const attach = (grant, scheme, field) => {
+    const checked2 = credentialGrantSchema.parse(grant);
+    if (checked2.placement.scheme !== scheme || scheme === "form" && (!("field" in checked2.placement) || checked2.placement.field !== field)) {
+      throw new Error("An OAuth credential must use its standard token-request carrier.");
+    }
+    handles.push(checked2.handle_id);
+  };
+  if (input2.client.kind === "client_secret_basic")
+    attach(input2.client.credential, "basic");
+  else if (input2.client.kind === "client_secret_post") {
+    attach(input2.client.id, "form", "client_id");
+    attach(input2.client.secret, "form", "client_secret");
+  } else
+    form.set("client_id", external_exports.string().min(1).max(4096).parse(input2.client.clientId));
+  if (input2.grant.kind === "refresh_token")
+    attach(input2.grant.credential, "form", "refresh_token");
+  return {
+    request: {
+      method: "POST",
+      url: endpoint2,
+      headers: { accept: "application/json" },
+      body: {
+        mediaType: "application/x-www-form-urlencoded",
+        bytes: new TextEncoder().encode(form.toString())
+      }
+    },
+    handles,
+    keep: [
+      {
+        ...input2.access,
+        placement: { scheme: "bearer", headerName: "authorization" },
+        pointer: "/access_token",
+        expiresInPointer: "/expires_in"
+      },
+      {
+        subject: `${input2.access.subject} refresh token`,
+        placement: { scheme: "form", field: "refresh_token" },
+        origins: [url2.origin],
+        methods: ["POST"],
+        pointer: "/refresh_token",
+        optional: true
+      },
+      // An OpenID Connect provider may answer with an ID token too. Custody keeps it so that
+      // no later exchange of the caller's can echo it, and `oauthRetirements` retires it at
+      // once, so nothing ever attaches it.
+      {
+        subject: `${input2.access.subject} ID token`,
+        placement: { scheme: "bearer", headerName: "authorization" },
+        origins: [url2.origin],
+        methods: ["POST"],
+        pointer: "/id_token",
+        optional: true
+      }
+    ]
+  };
+}
+function oauthTokenResponse(outcome) {
+  const { record: record2, body: body2 } = outcome.exchange;
+  const successful = record2.outcome === "responded" && record2.response.status >= 200 && record2.response.status <= 299;
+  const kept = (pointer) => successful ? outcome.kept.filter(({ source }) => source.kind === "issued" && source.exchange_digest === record2.exchange_digest && source.pointer === pointer) : [];
+  const refreshes = kept("/refresh_token");
+  const refresh = refreshes.length === 1 ? refreshes[0] : null;
+  const unavailable = (reason) => ({
+    kind: "unavailable",
+    reason,
+    refresh
+  });
+  if (!successful || body2 === null) {
+    return unavailable("The token endpoint did not issue a usable credential.");
+  }
+  let value;
+  try {
+    value = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(body2));
+  } catch {
+    return unavailable("The token response is not JSON.");
+  }
+  const parsed = external_exports.object({ token_type: external_exports.string(), error: external_exports.unknown().optional() }).safeParse(value);
+  if (!parsed.success || parsed.data.token_type.toLowerCase() !== "bearer" || parsed.data.error !== void 0) {
+    return unavailable("The token endpoint did not issue a bearer token.");
+  }
+  const access2 = kept("/access_token");
+  if (refreshes.length > 1)
+    return unavailable("The token response has no exact retained credential.");
+  if (outcome.keepFailure !== null || access2.length !== 1)
+    return unavailable("The token response has no usable retained access credential.");
+  return { kind: "issued", access: access2[0], refresh };
 }
 
 // node_modules/almanac/dist/modules/http/src/body.js
@@ -60593,112 +60717,10 @@ function allowedBindingPorts(ports, allowance) {
   };
 }
 
-// node_modules/almanac/dist/modules/custody/src/oauth.js
-function oauthRetirements(request3, outcome, token) {
-  const usable = /* @__PURE__ */ new Set([
-    ...token.kind === "issued" ? [token.access.handle_id] : [],
-    ...token.refresh ? [token.refresh.handle_id] : []
-  ]);
-  return [
-    ...outcome.kept.filter(({ handle_id }) => !usable.has(handle_id)).map(({ handle_id }) => handle_id),
-    ...token.refresh && request3.grant.kind === "refresh_token" ? [request3.grant.credential.handle_id] : []
-  ];
-}
-function oauthTokenRequest(input2) {
-  const endpoint2 = external_exports.url({ protocol: /^https$/u }).parse(input2.tokenEndpoint);
-  const url2 = new URL(endpoint2);
-  if (url2.username || url2.password || url2.hash)
-    throw new Error("A token endpoint carries no credential or fragment.");
-  const scopes = external_exports.array(external_exports.string().regex(/^[\x21\x23-\x5B\x5D-\x7E]{1,128}$/u)).max(32).parse(input2.scopes ?? []);
-  if (new Set(scopes).size !== scopes.length)
-    throw new Error("OAuth scopes are unique.");
-  if (input2.grant.kind === "client_credentials" && input2.client.kind === "public") {
-    throw new Error("Client credentials require a confidential client.");
-  }
-  const form = new URLSearchParams({ grant_type: input2.grant.kind });
-  if (scopes.length > 0)
-    form.set("scope", scopes.join(" "));
-  const handles = [];
-  const attach = (grant, scheme, field) => {
-    const checked2 = credentialGrantSchema.parse(grant);
-    if (checked2.placement.scheme !== scheme || scheme === "form" && (!("field" in checked2.placement) || checked2.placement.field !== field)) {
-      throw new Error("An OAuth credential must use its standard token-request carrier.");
-    }
-    handles.push(checked2.handle_id);
-  };
-  if (input2.client.kind === "client_secret_basic")
-    attach(input2.client.credential, "basic");
-  else if (input2.client.kind === "client_secret_post") {
-    attach(input2.client.id, "form", "client_id");
-    attach(input2.client.secret, "form", "client_secret");
-  } else
-    form.set("client_id", external_exports.string().min(1).max(4096).parse(input2.client.clientId));
-  if (input2.grant.kind === "refresh_token")
-    attach(input2.grant.credential, "form", "refresh_token");
-  return {
-    request: {
-      method: "POST",
-      url: endpoint2,
-      headers: { accept: "application/json" },
-      body: {
-        mediaType: "application/x-www-form-urlencoded",
-        bytes: new TextEncoder().encode(form.toString())
-      }
-    },
-    handles,
-    keep: [
-      {
-        ...input2.access,
-        placement: { scheme: "bearer", headerName: "authorization" },
-        pointer: "/access_token",
-        expiresInPointer: "/expires_in"
-      },
-      {
-        subject: `${input2.access.subject} refresh token`,
-        placement: { scheme: "form", field: "refresh_token" },
-        origins: [url2.origin],
-        methods: ["POST"],
-        pointer: "/refresh_token",
-        optional: true
-      }
-    ],
-    // An OpenID Connect provider may answer with an ID token too: nobody holds it.
-    secretFields: ["/id_token"]
-  };
-}
-function oauthTokenResponse(outcome) {
-  const { record: record2, body: body2 } = outcome.exchange;
-  const successful = record2.outcome === "responded" && record2.response.status >= 200 && record2.response.status <= 299;
-  const kept = (pointer) => successful ? outcome.kept.filter(({ source }) => source.kind === "issued" && source.exchange_digest === record2.exchange_digest && source.pointer === pointer) : [];
-  const refreshes = kept("/refresh_token");
-  const refresh = refreshes.length === 1 ? refreshes[0] : null;
-  const unavailable = (reason) => ({
-    kind: "unavailable",
-    reason,
-    refresh
-  });
-  if (!successful || body2 === null) {
-    return unavailable("The token endpoint did not issue a usable credential.");
-  }
-  let value;
-  try {
-    value = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(body2));
-  } catch {
-    return unavailable("The token response is not JSON.");
-  }
-  const parsed = external_exports.object({ token_type: external_exports.string(), error: external_exports.unknown().optional() }).safeParse(value);
-  if (!parsed.success || parsed.data.token_type.toLowerCase() !== "bearer" || parsed.data.error !== void 0) {
-    return unavailable("The token endpoint did not issue a bearer token.");
-  }
-  const access2 = kept("/access_token");
-  if (refreshes.length > 1)
-    return unavailable("The token response has no exact retained credential.");
-  if (outcome.keepFailure !== null || access2.length !== 1)
-    return unavailable("The token response has no usable retained access credential.");
-  return { kind: "issued", access: access2[0], refresh };
-}
-
 // dist/modules/agent-readiness-engine/src/calls.js
+function callSucceeded(call) {
+  return call.kind === "http" ? call.status !== null && call.status >= 200 && call.status <= 299 : call.mcpOk === true;
+}
 function httpCallResult(handed2, record2, body2) {
   const sent = sentHttpRequest(handed2, record2);
   const { method } = record2.request;
@@ -61321,8 +61343,7 @@ function bindingExchangeRequest(asked) {
     request: asked.request,
     handles: asked.handles,
     ...asked.keep ? { keep: asked.keep } : {},
-    scrub: asked.scrub,
-    ...asked.secretFields ? { secretFields: asked.secretFields } : {}
+    scrub: asked.scrub
   };
 }
 var RunnerError = class extends Error {
@@ -61339,6 +61360,7 @@ async function performBinding(input2) {
   const residue = [];
   const credentials = new Map(input2.credentials);
   const ledger = [...input2.credentials].map(([role, grant]) => ({ role, grant }));
+  const inCustody = new Set([...input2.credentials.values()].map(({ handle_id }) => handle_id));
   const documents = /* @__PURE__ */ new Map();
   const results = /* @__PURE__ */ new Map();
   const sessions = /* @__PURE__ */ new Map();
@@ -61357,7 +61379,7 @@ async function performBinding(input2) {
     sinks: input2.sinks,
     calls: documents
   });
-  async function exchange(step, request3, handles, keep, secretFields) {
+  async function exchange(step, request3, handles, keep) {
     if (step.purpose === "job")
       jobSent = true;
     const attached = new Set(handles);
@@ -61367,11 +61389,10 @@ async function performBinding(input2) {
       request: request3,
       handles,
       ...keep ? { keep } : {},
-      ...secretFields ? { secretFields } : {},
-      scrub: [
-        ...new Set(ledger.map(({ grant }) => grant.handle_id).filter((handle) => !attached.has(handle)))
-      ]
+      scrub: [...inCustody].filter((handle) => !attached.has(handle))
     });
+    for (const { handle_id } of performed.kept)
+      inCustody.add(handle_id);
     exchanges.push({
       purpose: step.purpose,
       call_id: step.callId,
@@ -61382,7 +61403,13 @@ async function performBinding(input2) {
     return performed;
   }
   function answered(callId, performed) {
-    if (performed.record.outcome === "responded" && performed.body === null) {
+    if (performed.record.outcome !== "responded")
+      return;
+    const { status } = performed.record.response;
+    if (status === 429 || status >= 500) {
+      throw new RunnerError(`Call ${callId} answered HTTP ${status}: the service was busy or failing, so this run proves nothing either way.`);
+    }
+    if (performed.body === null) {
       throw new RunnerError(`Call ${callId}'s answer was withheld: ${performed.keepFailure ?? "it echoed a credential the run holds."}`);
     }
   }
@@ -61489,7 +61516,7 @@ async function performBinding(input2) {
       }
     };
     const asked = oauthTokenRequest(request3);
-    const performed = await exchange({ purpose: "delegation", callId: AGENT_READINESS_OAUTH_TOKEN_CALL, role: "request" }, asked.request, asked.handles, asked.keep, asked.secretFields);
+    const performed = await exchange({ purpose: "delegation", callId: AGENT_READINESS_OAUTH_TOKEN_CALL, role: "request" }, asked.request, asked.handles, asked.keep);
     const outcome = {
       exchange: { record: performed.record, body: performed.body },
       kept: performed.kept,
@@ -61562,18 +61589,22 @@ async function performBinding(input2) {
   const cleanupFailures = [];
   if (jobSent) {
     for (const call of binding.cleanup) {
+      let reason;
       try {
-        await perform("cleanup", call);
+        const result = await perform("cleanup", call);
+        reason = callSucceeded(result) ? null : result.kind === "http" ? `it answered HTTP ${result.status}` : "its tool answered with an error";
       } catch (error63) {
         if (error63 instanceof BindingAbortedError)
           throw error63;
-        cleanupFailures.push(call.call_id);
-        const reason = error63 instanceof Error ? error63.message : String(error63);
-        residue.push({
-          step: "job",
-          reason: `Cleanup ${call.call_id} failed: ${reason}`.slice(0, 300)
-        });
+        reason = error63 instanceof Error ? error63.message : String(error63);
       }
+      if (reason === null)
+        continue;
+      cleanupFailures.push(call.call_id);
+      residue.push({
+        step: "job",
+        reason: `Cleanup ${call.call_id} failed (${reason}), so what the job made may still exist: remove it by hand.`.slice(0, 300)
+      });
     }
   }
   if (escaped)
@@ -61717,6 +61748,9 @@ var ownTokenSchema = external_exports.object({
 });
 var INTAKE_PATIENCE_MS = 15 * 60 * 1e3;
 var INTAKE_POLL_MS = 5e3;
+var SOURCEY_ATTEMPTS = 3;
+var SOURCEY_TIMEOUT_MS = 3e4;
+var SOURCEY_RETRY_MS = 2e3;
 async function runAgentReadinessAction(input2, host) {
   const secrets = credentialValues(input2);
   for (const value of Object.values(secrets))
@@ -61745,12 +61779,12 @@ async function runAgentReadinessAction(input2, host) {
     ...Object.entries(supplied).flatMap(([name, value]) => value === void 0 ? [name] : [])
   ];
   if (absent.length > 0) {
-    throw new Error(`The credentials secret has no value for ${absent.join(", ")}.`);
+    throw new Error(`The job didn't start: the credentials secret has no value for ${absent.join(", ")}. Add it and run the workflow again.`);
   }
   const used = /* @__PURE__ */ new Set([...read, ...Object.keys(supplied)]);
   const unused = Object.keys(secrets).filter((name) => !used.has(name));
   if (unused.length > 0) {
-    throw new Error(`The credentials secret names ${unused.join(", ")}, which this binding never uses.`);
+    throw new Error(`The job didn't start: the credentials secret has ${unused.join(", ")}, which this binding never uses. Remove it and run the workflow again.`);
   }
   const now = () => host.now();
   const limits = { maximumBytes: AGENT_READINESS_RUN_MAX_BODY_BYTES, timeoutMs: 3e4 };
@@ -61770,11 +61804,39 @@ async function runAgentReadinessAction(input2, host) {
   const journal = createMemoryEffectJournal();
   const uncredentialed = uncredentialedExchange({ limits, userAgent: userAgent2, now });
   let started = false;
+  let writeBackFailure = null;
+  const cleanupSent = /* @__PURE__ */ new Map();
+  async function writeBackRotation(rotated) {
+    if (!input2.writeBack) {
+      host.log("The service replaced its refresh token, and this workflow doesn't write it back, so the stored refresh token no longer works. The README's section on a rotating refresh token shows how to set that up.");
+      return;
+    }
+    const { token: token2, secretName } = input2.writeBack;
+    try {
+      await writeGitHubActionsSecret({
+        client: new GitHubApiClient({
+          token: token2,
+          userAgent: input2.executor.name,
+          fetch: (resource, init) => host.fetch(resource instanceof Request ? resource.url : String(resource), init ?? {})
+        }),
+        repository: own2.repository,
+        name: secretName,
+        seal: (publicKey) => custody.sealTo(rotated.handle_id, publicKey)
+      });
+      host.log(`Wrote the new refresh token back to ${secretName}.`);
+    } catch (error63) {
+      writeBackFailure = new Error(`The new refresh token was not written back to ${secretName}: ${error63 instanceof Error ? error63.message : String(error63)}`);
+      host.log(writeBackFailure.message);
+    }
+  }
   const journaled = {
     async exchange(asked) {
-      if (asked.step.purpose === "job" && !started) {
+      if (!started) {
         await sourcey(host, input2.api, await host.idToken(AGENT_READINESS_RUN_TOKEN_AUDIENCE), `/v1/agent-readiness/challenges/${challenge.challenge_id}/start`, { method: "POST", answer: agentReadinessChallengeStateSchema });
         started = true;
+      }
+      if (asked.step.purpose === "cleanup" && asked.step.role === "request") {
+        cleanupSent.set(asked.step.callId, requestWords(asked.request));
       }
       const exchanged = await journaledExchange({
         journal,
@@ -61787,6 +61849,11 @@ async function runAgentReadinessAction(input2, host) {
       });
       if (exchanged.kind !== "exchanged") {
         throw new Error(`Exchange ${asked.key} was ${exchanged.kind}, and the run cannot finish.`);
+      }
+      if (binding.delegation.kind === "oauth_refresh_token" && asked.step.purpose === "delegation" && asked.step.callId === AGENT_READINESS_OAUTH_TOKEN_CALL) {
+        const { refresh } = oauthTokenResponse(exchanged.outcome);
+        if (refresh)
+          await writeBackRotation(refresh);
       }
       const { exchange, kept, keepFailure } = exchanged.outcome;
       return {
@@ -61817,8 +61884,7 @@ async function runAgentReadinessAction(input2, host) {
     ports: allowedBindingPorts(journaled, { budget: challenge.byte_budget, content })
   });
   for (const { reason } of performed.residue)
-    host.log(`Residue: ${reason}`);
-  const writtenBack = await writeBackRotation(host, input2, own2.repository, performed, custody).then(() => null, (error63) => error63 instanceof Error ? error63 : new Error(String(error63)));
+    host.log(reason);
   const results = agentReadinessRunResultsSchema.parse({
     credentials: [...credentials].map(([role, grant]) => ({ role, grant })),
     public_client_id: publicClientId,
@@ -61851,37 +61917,49 @@ async function runAgentReadinessAction(input2, host) {
     intake = await sourcey(host, input2.api, await host.idToken(AGENT_READINESS_RUN_TOKEN_AUDIENCE), `/v1/agent-readiness/runs/${intake.intake_id}`, { method: "GET", answer: agentReadinessIntakeSchema });
   }
   if (intake.state === "rejected") {
-    throw new Error(`Sourcey rejected run ${intake.intake_id} at its ${intake.check} check: ${intake.reason}`);
+    throw new Error(`Sourcey didn't accept this run (its ${intake.check} check): ${intake.reason}`);
   }
-  host.log(`Accepted as run ${intake.run_digest}.`);
-  if (writtenBack)
-    throw writtenBack;
+  const left = performed.cleanupFailures.map((callId) => `Cleanup ${callId} failed, so what the job made may still exist. To remove it by hand, send what the cleanup sent: ${cleanupSent.get(callId) ?? "nothing, since it never reached the service"}`);
+  const report = runReport(intake, job, performed.residue);
+  const lines = [...report.lines, ...left];
+  for (const line2 of lines)
+    host.log(line2);
+  await host.summary(lines.join("\n\n"));
+  if (writeBackFailure)
+    throw writeBackFailure;
+  if (intake.outcome.kind !== "done")
+    throw new Error(report.lines[0]);
+  if (left[0])
+    throw new Error(left[0]);
   return intake;
 }
-async function writeBackRotation(host, input2, repository, performed, custody) {
-  const rotated = performed.credentials.findLast(({ role, grant }) => role === AGENT_READINESS_OAUTH_ROLES.refreshToken && grant.source.kind === "issued");
-  if (!rotated)
-    return;
-  if (!input2.writeBack) {
-    host.log("The service rotated its refresh token and this run writes nothing back: the stored refresh token no longer works.");
-    return;
-  }
-  const { token, secretName } = input2.writeBack;
-  try {
-    await writeGitHubActionsSecret({
-      client: new GitHubApiClient({
-        token,
-        userAgent: input2.executor.name,
-        fetch: (resource, init) => host.fetch(resource instanceof Request ? resource.url : String(resource), init ?? {})
-      }),
-      repository,
-      name: secretName,
-      seal: (publicKey) => custody.sealTo(rotated.grant.handle_id, publicKey)
-    });
-  } catch (error63) {
-    throw new Error(`The rotated refresh token was not written back to ${secretName}: ${error63 instanceof Error ? error63.message : String(error63)}`);
-  }
-  host.log(`Wrote the rotated refresh token back to ${input2.writeBack.secretName}.`);
+function requestWords(request3) {
+  const body2 = request3.body ? ` ${new TextDecoder().decode(request3.body.bytes)}` : "";
+  return `${request3.method} ${request3.url}${body2}`.slice(0, 1e3);
+}
+function runReport(intake, job, residue) {
+  const result = (() => {
+    const { outcome } = intake;
+    if (outcome.kind === "done")
+      return "The run did the job.";
+    if (outcome.kind === "unproven") {
+      return `The run proved nothing either way. ${residue[0]?.reason ?? "It stopped before the job's calls were answered."}`;
+    }
+    const { failure: failure2 } = outcome;
+    if (failure2.kind === "refused") {
+      return `The run did not do the job: the service refused the ${failure2.call_id} request (HTTP ${failure2.status}) with credentials it had accepted earlier in the run.`;
+    }
+    const expected = job.assertions.find(({ name }) => name === failure2.assertion);
+    return `The run did not do the job. Expected: ${expected?.statement ?? failure2.assertion}`;
+  })();
+  const whose = intake.vendor === "vendor" ? "DNS names this repository as the vendor's, so this run counts as the vendor's own." : intake.vendor === "third_party" ? "DNS doesn't name this repository as the vendor's, so this run counts as a third party's, and its failures never change the card. The Verify the job page shows the DNS record that makes the runs yours." : "DNS didn't answer for the vendor's domain, so this run couldn't be counted as the vendor's own.";
+  return {
+    lines: [
+      result,
+      whose,
+      intake.card_url === null ? "The listing is no longer published, so no report card shows this run." : `Sourcey is refreshing the report card with this run: ${intake.card_url}`
+    ]
+  };
 }
 function credentialValues(input2) {
   let parsed;
@@ -61923,7 +62001,7 @@ function assertChallenge(challenge, input2, own2) {
     throw new Error("Sourcey's challenge is bound to another run.");
   }
   if (challenge.executor_digest !== input2.executor.executor_digest) {
-    throw new Error(`Sourcey replays runs with executor ${challenge.executor_digest}, and this Action bundles ${input2.executor.executor_digest}: pin the Action's current release.`);
+    throw new Error("This release of the Action is out of date. Pin the commit your report card's Verify the job page shows, then run the workflow again.");
   }
 }
 async function retainedContent(content, results) {
@@ -61952,20 +62030,37 @@ function parsedJson(text) {
     return void 0;
   }
 }
+async function retried(host, what, send) {
+  for (let attempt = 1; ; attempt += 1) {
+    const last = attempt >= SOURCEY_ATTEMPTS;
+    try {
+      const response2 = await send();
+      if (last || response2.status !== 429 && response2.status < 500) {
+        return { status: response2.status, ok: response2.ok, text: await response2.text() };
+      }
+      await response2.body?.cancel();
+    } catch (error63) {
+      if (last) {
+        throw new Error(`Sourcey couldn't be reached for ${what}: ${error63 instanceof Error ? error63.message : String(error63)}`);
+      }
+    }
+    await host.sleep(attempt * SOURCEY_RETRY_MS);
+  }
+}
 async function sourcey(host, api, token, path, call) {
-  const response2 = await host.fetch(new URL(path, api).href, {
+  const { ok, status, text } = await retried(host, `${call.method} ${path}`, () => host.fetch(new URL(path, api).href, {
     method: call.method,
     headers: {
       authorization: `Bearer ${token}`,
       accept: "application/json",
       ...call.body === void 0 ? {} : { "content-type": "application/json" }
     },
-    ...call.body === void 0 ? {} : { body: JSON.stringify(call.body) }
-  });
-  const text = await response2.text();
-  if (!response2.ok) {
+    ...call.body === void 0 ? {} : { body: JSON.stringify(call.body) },
+    signal: AbortSignal.timeout(SOURCEY_TIMEOUT_MS)
+  }));
+  if (!ok) {
     const refused = catalogApiErrorResponseSchema.safeParse(parsedJson(text));
-    throw new Error(refused.success ? `Sourcey refused ${call.method} ${path}: ${refused.data.error.message}` : `Sourcey answered ${call.method} ${path} with HTTP ${response2.status}.`);
+    throw new Error(refused.success ? `Sourcey refused ${call.method} ${path}: ${refused.data.error.message}` : `Sourcey answered ${call.method} ${path} with HTTP ${status}.`);
   }
   return call.answer.parse(apiEnvelope(external_exports.unknown()).parse(parsedJson(text)).data);
 }
@@ -61984,7 +62079,7 @@ function optional2(name, as) {
 function writeBack() {
   const token = process.env.SOURCEY_SECRETS_TOKEN;
   const secretName = process.env.SOURCEY_REFRESH_TOKEN_SECRET;
-  if (!token !== !secretName) {
+  if (Boolean(token) !== Boolean(secretName)) {
     throw new Error("Write-back needs both the secrets_token secret and the refresh_token_secret input.");
   }
   return token && secretName ? { writeBack: { token, secretName } } : {};
@@ -62002,6 +62097,9 @@ try {
     idToken: (audience) => getIDToken(audience),
     mask: (value) => setSecret(value),
     log: (message) => info(message),
+    summary: async (text) => {
+      await summary.addRaw(text, true).write();
+    },
     fetch: (url2, init) => fetch(url2, init),
     attest: async ({ subjects, predicateType, predicate, sigstore }) => (await attest({
       subjects: [...subjects],

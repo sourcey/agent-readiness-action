@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "dist/contracts/agent-readiness/src/binding.js",
-      "sha256": "sha256:b6f4f3a1fba1f4b839920f7fdf28d4a0513c081b4629724bd00b26b1bd32f4e2"
+      "sha256": "sha256:b2298116decbe1cfb16036f7a68f10795e6ac2ad66f4a067ee07526472b399e2"
     },
     {
       "path": "dist/contracts/agent-readiness/src/declaration-reference.js",
@@ -24,11 +24,11 @@
     },
     {
       "path": "dist/contracts/agent-readiness/src/run.js",
-      "sha256": "sha256:fc770a84e40fc6f236c566ed78fd62ea888bd8d7a39fd77407b64392af7cf369"
+      "sha256": "sha256:9acf089e16381e30960ba1b6d82b7891ed163ad0b90a327990b9b725cf6d91b9"
     },
     {
       "path": "dist/contracts/agent-readiness/src/shared.js",
-      "sha256": "sha256:d74e7a1743a971fee9961d2dae056027fe7f57d499d65d55c66a1482c6bad73c"
+      "sha256": "sha256:f72468dc94e18eae6e1583a014370bad322344f98eafa5d8a7222fe6db9a7254"
     },
     {
       "path": "dist/contracts/agent-readiness/src/surfaces.js",
@@ -36,7 +36,7 @@
     },
     {
       "path": "dist/contracts/agent-readiness/src/verified-run.js",
-      "sha256": "sha256:58e69d6c8ddc127b2a52e9b264dfc2056d0a1e054cf6471f7059aa095cbfbdfd"
+      "sha256": "sha256:7734568664a54b70e5a08552ef8be55ec21565d7e36f345d84f463e451c625ba"
     },
     {
       "path": "dist/contracts/api/src/values.js",
@@ -64,7 +64,7 @@
     },
     {
       "path": "dist/modules/agent-readiness-engine/src/calls.js",
-      "sha256": "sha256:32bed89538e14b1de03a2cde9a66a0461de9609db3f24b79dba179ab5e5a0e96"
+      "sha256": "sha256:2eff76c2ac2727e28774766464328e5156f4e09d92dcb4475add0d766b6195e2"
     },
     {
       "path": "dist/modules/agent-readiness-engine/src/mcp-session.js",
@@ -72,7 +72,7 @@
     },
     {
       "path": "dist/modules/agent-readiness-engine/src/perform.js",
-      "sha256": "sha256:759f6a16c429543c9366989a9ce7256c8cde3a559f9fdc3ddf2dcb8870c17cd6"
+      "sha256": "sha256:35778829deb93a880c782f9354a02703bd544bb9e40de1308b5614265ccbcd4e"
     },
     {
       "path": "dist/modules/agent-readiness-engine/src/records.js",
@@ -92,16 +92,16 @@
     },
     {
       "path": "dist/packages/agent-readiness-action/src/action.js",
-      "sha256": "sha256:53ef11456b3783df2e3e53d56dfc53510edccd09ae7c8494f6fdd5bfd27dc460"
+      "sha256": "sha256:50385e7d59f8374162b57113f25ca695e6af67b4b51217ca4cc290accae89400"
     },
     {
       "path": "dist/packages/agent-readiness-action/src/run.js",
-      "sha256": "sha256:18c5014d873ad3b4ee488d6d3938d93a4579977a5ef276f3e70d37eab5b87861"
+      "sha256": "sha256:66e9f9c317b912b55b28effdeb655840bd4cc785243c22a0d90698b080be3690"
     },
     {
       "path": "dist/packages/evidence-runtime/src/executor.js",
       "sha256": "sha256:14a95fb4205f099193b75c6c94ccc1aafc23eda059a4181bac33730f9da596f4"
     }
   ],
-  "closure_digest": "sha256:5143aaafa6d71218a74c79fd7000c3130f90dfc71cc8622ed42bb673085e2ec5"
+  "closure_digest": "sha256:b6b553e1b69d4377d2929bc1c4fdf127191c012daf22a9d99f8da80b1df7d80c"
 }

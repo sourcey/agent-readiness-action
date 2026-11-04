@@ -489,8 +489,8 @@
       "name": "almanac",
       "version": "0.0.0",
       "license": "MIT",
-      "resolved": "https://artifacts.sourcey.com/almanac/sha256-b2686d7a7bad39317886c934402a33ef2303ebf97633e491ae6db4a18e5c8894/almanac-sha256-b2686d7a7bad39317886c934402a33ef2303ebf97633e491ae6db4a18e5c8894.tar.gz",
-      "integrity": "sha512-rIUYCzbbk5jz9DR4w6Yghe3zMsMfHzPAF8GbS+7XYE6nkCQwqanNbjH0VhTKRjCDODirq5TOgKW5jb44JgAWAQ==",
+      "resolved": "https://artifacts.sourcey.com/almanac/sha256-0513690f2dc2853c98ce3430f5febe3a16d03ef83d8b6b4bcc115d7919486250/almanac-sha256-0513690f2dc2853c98ce3430f5febe3a16d03ef83d8b6b4bcc115d7919486250.tar.gz",
+      "integrity": "sha512-Yd91COV4DSLFvInnK4q4553P6lmQg/c5xyZPxX0kAezZCCPiIzjuvkpTnqYQjOsfBYQKd9GPPqzpRJ+5i7vTeg==",
       "lock_path": "node_modules/almanac",
       "license_files": [
         {

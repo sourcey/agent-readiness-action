@@ -3,20 +3,32 @@
 Verify that an agent can do your service's job, with your own account, on your
 own GitHub Actions runner. Sourcey never holds your credentials.
 
-The Action runs one job binding from your service's Agent Readiness listing:
-it asks Sourcey for a challenge, performs the binding's calls with your
-credentials, records every exchange, signs the record with your job's GitHub
-identity and submits it. Sourcey replays the record against the binding, checks
-the job's assertions itself, and the report card shows the job verified.
+The Action runs one job from your service's Agent Readiness listing: it asks
+Sourcey for a one-time challenge, makes the job's requests with your
+credentials, records each one, signs the record with your workflow's GitHub
+identity and sends it to Sourcey. Sourcey replays the record, checks the job's
+results itself, and your report card shows the job verified.
 
-## Add the workflow
+## Set it up
 
-Add one workflow to a repository you control, naming the profile and binding
-your report card shows, at a released commit of this repository. The card shows
-the job verified with the date of the last run that did it. The workflow runs
-once a month by default, and you can run it from the Actions tab whenever you
-like. Take the workflow from your report card's verify page: it gives your job
-a day and a time of its own, so runs spread across the month.
+1. Open your report card on sourcey.com and choose **Verify the job**. The page
+   shows the workflow for your job, filled in: the profile, the binding, the
+   release commit to pin, and a day and time each month of its own, so runs
+   spread out.
+2. Save it as `.github/workflows/sourcey-agent-readiness.yml` on your
+   repository's default branch.
+3. In **Settings → Secrets and variables → Actions**, add the repository
+   secret `SOURCEY_AGENT_READINESS_CREDENTIALS` (see below).
+4. Run it now from **Actions → Agent Readiness → Run workflow**. After that it
+   runs once a month on its own.
+
+The card shows the job verified with the date of the last run that did it.
+When a run doesn't do the job, the workflow fails, so GitHub tells you, and the
+run's summary says what failed. GitHub stops the scheduled runs of a public
+repository that has gone 60 days without a commit, so use one that sees
+commits, such as your SDK's.
+
+The workflow looks like this:
 
 ```yaml
 name: Agent Readiness
@@ -38,32 +50,30 @@ jobs:
       credentials: ${{ secrets.SOURCEY_AGENT_READINESS_CREDENTIALS }}
 ```
 
-Pin the full commit of a release tag. Sourcey accepts runs only from commits
-its release chain tagged, and only from GitHub-hosted runners.
+Pin the full commit the Verify the job page shows. Sourcey accepts runs only
+from commits its release chain tagged, and only on GitHub-hosted runners.
 
 ## The credentials secret
 
-One repository secret holds a JSON object from the binding's credential roles
-to their values, and any input the job asks its runner for, such as the number
-a text message goes to:
+The secret is one JSON object: each credential the binding uses, and any input
+the job asks for, such as the number a text message goes to. The Verify the job
+page lists exactly what yours needs:
 
 ```json
 { "account_key": "..." }
 ```
 
-An OAuth binding names `client_id`, `client_secret` or `refresh_token` as its
-form needs. The Action refuses a secret that lacks a role, or names one the
-binding never uses, and any credential shorter than 8 characters: one that short
-cannot be told from ordinary text, so nothing could keep it out of what a
-service returns. Every value is masked in the job's log.
+The Action refuses a secret that misses one of these or adds another, and any
+value shorter than 8 characters, which it couldn't keep out of what a service
+sends back. Every value is masked in the job's log.
 
-### A rotating refresh token
+### A refresh token that changes on each use
 
-A service that issues a new refresh token on each use leaves the stored one
-unusable. Pass the refresh token in a secret of its own, and give the Action a
-fine-grained token with Actions secrets write on this repository alone; a
-rotation is then sealed to the repository's public key inside the run's custody
-and written back to that secret, and nothing else is done with the token:
+If your service replaces its refresh token each time it's used, keep the
+refresh token in a secret of its own, `SOURCEY_REFRESH_TOKEN`, and leave
+`refresh_token` out of the credentials JSON. Create a fine-grained GitHub token
+with **Secrets: write** on this repository only, save it as
+`SOURCEY_SECRETS_WRITE_TOKEN`, and add these lines to the workflow:
 
 ```yaml
     with:
@@ -76,34 +86,40 @@ and written back to that secret, and nothing else is done with the token:
       secrets_token: ${{ secrets.SOURCEY_SECRETS_WRITE_TOKEN }}
 ```
 
-## What leaves the runner
+The Action writes each new refresh token back to `SOURCEY_REFRESH_TOKEN` as
+soon as your service issues it, sealed to the repository's key, and does
+nothing else with the GitHub token.
 
-- Your credentials never do. They live in an in-memory custody for the run,
-  attached only to the binding's own endpoints and methods, and the run's
-  record names each by a digest of its handle.
-- A response that echoes any credential the run holds, however it is escaped,
-  is never kept: its body is withheld whole and a header carrying one is
-  dropped. That call's answer cannot be read, so the run stops there as
-  residue, which neither proves the job nor counts against it.
-- Sourcey receives the record of each exchange (method, URL, header names,
-  status, sizes and digests), the scrubbed response bodies, and a Sigstore
-  attestation of the record. It publishes the run record; it keeps the bodies
-  and the attestation privately.
+## What leaves your runner
 
-## The transparency log
+- Your credentials never do. They're held in memory for the run and sent only
+  to the binding's own endpoints, and the run's record refers to each by a
+  fingerprint.
+- If a response echoes a credential back, however it's encoded, that response
+  isn't kept: the run stops there and proves nothing either way. So does a
+  service that answers 429 or 5xx.
+- Sourcey receives a record of each request (method, address, header names,
+  status, sizes and fingerprints), the response bodies with credentials
+  removed, and a signed attestation of the record. It publishes the record and
+  keeps the bodies and the attestation private.
+
+## Say the runs are yours
+
+A run from any repository can verify the job. Your own runs count for more:
+two of them, a while apart, that fail the same way put that failure on the card
+in place of Job verified until one of your runs passes. To make a repository's
+runs yours, add a DNS TXT record at `_sourcey-agent-readiness.<your domain>`
+reading `github-owner-id=<owner id> github-repository-id=<repository id>`.
 
 The attestation is signed on the Sigstore instance GitHub assigns your
-repository. For a public repository that is the public-good instance, whose
-public log names your repository and the run. For a private or internal
-repository it is GitHub's own instance, with no public log. Sourcey's published
-record never names your repository: it says whether the run was the vendor's
-own, which you state with a DNS TXT record at
-`_sourcey-agent-readiness.<your domain>` reading
-`github-owner-id=<owner id> github-repository-id=<repository id>`.
+repository. For a public repository that's the public-good instance, whose
+public log names your repository and the run; for a private or internal one
+it's GitHub's own, with no public log. Sourcey's published record never names
+your repository.
 
 ## Releases
 
 Every file here is projected by Sourcey's release chain from the exact Catalog
-source that Sourcey replays runs with; `dist/run.mjs` is one bundle whose digest
+source Sourcey replays runs with. `dist/run.mjs` is one bundle whose digest
 `SOURCEY-BUNDLE.json` records, and `THIRD_PARTY_LICENSES.txt` carries the
 license of everything bundled in it.

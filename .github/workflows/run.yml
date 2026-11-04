@@ -8,26 +8,26 @@ on:
   workflow_call:
     inputs:
       profile:
-        description: The Agent Readiness profile its report card names (arp_...).
+        description: The profile ID from your report card's Verify the job page (arp_...).
         required: true
         type: string
       binding:
-        description: The binding of that profile's job to run.
+        description: The binding ID from the same page.
         required: true
         type: string
       refresh_token_secret:
-        description: The name of the secret passed as refresh_token, which a rotated refresh token replaces; needs secrets_token.
+        description: The name of the secret holding your refresh token, which the Action replaces when your service issues a new one. Needs secrets_token.
         required: false
         type: string
     secrets:
       credentials:
-        description: One JSON object from the binding's credential roles, and any inputs the job asks its runner for, to their values.
+        description: The JSON the Verify the job page shows, filled in with your credentials and the job's inputs.
         required: true
       refresh_token:
-        description: An OAuth refresh token kept apart from credentials, so a rotation can be written back to it.
+        description: Your refresh token, kept out of credentials so a new one can be written back to it.
         required: false
       secrets_token:
-        description: A token with Actions secrets write on this repository alone, used only to write a rotated refresh token back.
+        description: A GitHub token with Secrets write on this repository only, used only to write a new refresh token back.
         required: false
 
 permissions: {}
