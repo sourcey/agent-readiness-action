@@ -2,6 +2,12 @@
 
 Each version is a tag of this repository, and a workflow pins the tag's full commit.
 
+## 1.0.4
+
+- The workflow locates its own exact code using GitHub's default identity-token
+  audience. GitHub refuses the previous cross-owner GitHub audience.
+- A refused or incomplete identity stops before checkout, with no service request.
+
 ## 1.0.3
 
 - Claim jobs check the returned claim against the bounty and claimant you supplied,

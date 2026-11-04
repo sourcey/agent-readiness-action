@@ -42,14 +42,18 @@ jobs:
       - name: Locate this workflow's commit
         id: action
         # The job's own OIDC token names the reusable workflow and the commit it runs at.
+        # Use its default audience here; this token locates code, not Sourcey API authority.
+        shell: bash
         run: |
           token="$(curl --fail --silent --show-error \
             --header "Authorization: Bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" \
-            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=https://github.com/sourcey/agent-readiness-action" \
-            | jq --raw-output .value)"
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}" \
+            | jq --exit-status --raw-output .value)"
+          echo "::add-mask::${token}"
           claims="$(python3 -c 'import base64, sys; part = sys.argv[1].split(".")[1]; print(base64.urlsafe_b64decode(part + "=" * (-len(part) % 4)).decode())' "$token")"
-          echo "repository=$(jq --raw-output '.job_workflow_ref | split("/.github/")[0]' <<<"$claims")" >> "$GITHUB_OUTPUT"
-          echo "commit=$(jq --raw-output .job_workflow_sha <<<"$claims")" >> "$GITHUB_OUTPUT"
+          repository="$(jq --exit-status --raw-output '.job_workflow_ref | split("/.github/")[0]' <<<"$claims")"
+          commit="$(jq --exit-status --raw-output .job_workflow_sha <<<"$claims")"
+          printf 'repository=%s\ncommit=%s\n' "$repository" "$commit" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
           repository: ${{ steps.action.outputs.repository }}
