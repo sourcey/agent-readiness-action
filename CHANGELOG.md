@@ -2,6 +2,14 @@
 
 Each version is a tag of this repository, and a workflow pins the tag's full commit.
 
+## 1.0.3
+
+- Claim jobs check the returned claim against the bounty and claimant you supplied,
+  without requiring an artificial note or a cancellation API.
+- Jobs that retain a consequential result require `workflow_dispatch`. They never
+  receive a generated monthly schedule, and automatic CI events stop before a
+  request reaches the service.
+
 ## 1.0.2
 
 - The run says what happened, in its log and its summary: whether it did the

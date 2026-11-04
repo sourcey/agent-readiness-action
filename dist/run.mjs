@@ -54405,6 +54405,7 @@ var agentReadinessJobAssertionSchema = external_exports.object({
     "tool_called",
     "resource_created",
     "resource_read_back",
+    "claim_read_back",
     "resource_found_by_query",
     "message_accepted",
     "message_delivered",
@@ -54423,7 +54424,7 @@ var agentReadinessJobSchema = external_exports.object({
     from: observationReferenceSchema,
     to: observationReferenceSchema
   }).strict()).max(16),
-  /** A consequential job changes something and must clean it up; a billable one costs money. */
+  /** A consequential job changes something; a billable one costs money. */
   effect: external_exports.enum(["read", "consequential", "billable"]),
   cleanup: external_exports.enum(["none", "required"])
 }).strict().superRefine((job, context3) => {
@@ -54439,14 +54440,17 @@ var agentReadinessJobSchema = external_exports.object({
       });
     }
   }
-  if (job.effect === "consequential" !== (job.cleanup === "required")) {
+  if (job.cleanup === "required" && job.effect !== "consequential") {
     context3.addIssue({
       code: "custom",
       path: ["cleanup"],
-      message: "A consequential job, and only a consequential job, requires cleanup."
+      message: "Only a consequential job requires cleanup."
     });
   }
 });
+function agentReadinessJobAllowsSchedule(job) {
+  return job.effect !== "consequential" || job.cleanup === "required";
+}
 var agentReadinessJobLibraryCoreSchema = external_exports.object({
   library_contract: external_exports.literal(AGENT_READINESS_JOB_LIBRARY_CONTRACT),
   library_version: external_exports.string().trim().min(1).max(80),
@@ -54467,7 +54471,8 @@ var agentReadinessJobLibrarySchema = agentReadinessJobLibraryCoreSchema.safeExte
 var AGENT_READINESS_OBSERVED_CALL_METHODS = {
   read: ["GET", "HEAD"],
   write: ["POST", "PUT", "PATCH", "DELETE"],
-  query: ["GET", "POST"]
+  query: ["GET", "POST"],
+  create: ["POST"]
 };
 function agentReadinessOperandReads(operand, source) {
   return source === operand.source || operand.callerNamed === true && source === "request";
@@ -54507,6 +54512,28 @@ var PROOF_SIGNATURES = {
     ],
     sameCall: [["read_id", "content"]],
     differentCall: [["created_id", "read_id"]]
+  },
+  claim_read_back: {
+    observations: [
+      { name: "created_id", source: "json", method: "create" },
+      { name: "requested_subject", source: "request", method: "create", input: "bounty" },
+      { name: "requested_claimant", source: "request", method: "create", input: "claimant" },
+      { name: "read_id", source: "json", method: "read" },
+      { name: "subject", source: "json", method: "read" },
+      { name: "claimant", source: "json", method: "read" }
+    ],
+    sameCall: [
+      ["created_id", "requested_subject"],
+      ["created_id", "requested_claimant"],
+      ["read_id", "subject"],
+      ["read_id", "claimant"]
+    ],
+    differentCall: [["created_id", "read_id"]],
+    differentLocation: [
+      ["read_id", "subject"],
+      ["read_id", "claimant"],
+      ["subject", "claimant"]
+    ]
   },
   resource_found_by_query: {
     observations: [
@@ -54984,9 +55011,9 @@ function agentReadinessBindingIssues(input2) {
       }
       if (call && observed.source === "request" && agentReadinessOperandReads(required4, "request")) {
         const template = valueAtPointer(agentReadinessRequestTemplate(call), observed.pointer);
-        const placed = typeof template === "string" && (required4.source === "request" ? nonces.has(template) : [...nonces].some((nonce) => template.includes(nonce)));
+        const placed = typeof template === "string" && (required4.input !== void 0 ? job.inputs.some(({ name }) => name === required4.input) && template === `{{input.${required4.input}}}` : required4.source === "request" ? nonces.has(template) : [...nonces].some((nonce) => template.includes(nonce)));
         if (!placed) {
-          issues.push(`Assertion ${assertion.name}'s ${required4.name} must locate the run's nonce in the request.`);
+          issues.push(`Assertion ${assertion.name}'s ${required4.name} must locate ${required4.input === void 0 ? "the run's nonce" : `input.${required4.input}`} in the request.`);
         }
       }
     }
@@ -55006,6 +55033,13 @@ function agentReadinessBindingIssues(input2) {
       const b = observations.get(right);
       if (a && b && a.call === b.call)
         issues.push(`Assertion ${assertion.name}'s ${left} and ${right} must read different calls.`);
+    }
+    for (const [left, right] of proof.differentLocation ?? []) {
+      const a = observations.get(left);
+      const b = observations.get(right);
+      if (a && b && a.call === b.call && a.source === b.source && a.pointer === b.pointer) {
+        issues.push(`Assertion ${assertion.name}'s ${left} and ${right} must locate different fields.`);
+      }
     }
     for (const [left, right] of proof.independentCall ?? []) {
       const a = observations.get(left);
@@ -57080,6 +57114,9 @@ var agentReadinessJobResultSchema = external_exports.object({
 
 // dist/contracts/agent-readiness/src/verified-run.js
 var AGENT_READINESS_RUN_TOKEN_AUDIENCE = "https://api.sourcey.com";
+function agentReadinessRunEventRefusal(job, eventName) {
+  return agentReadinessJobAllowsSchedule(job) || eventName === "workflow_dispatch" ? null : "This job keeps the result it creates. Start it with Run workflow (workflow_dispatch), not an automatic CI event.";
+}
 var agentReadinessActionReleaseSchema = external_exports.object({
   version: external_exports.string().regex(/^[0-9]+\.[0-9]+\.[0-9]+$/u),
   commit: external_exports.string().regex(/^[0-9a-f]{40}$/u),
@@ -60255,15 +60292,38 @@ var AGENT_READINESS_JOB_LIBRARY_SOURCE = {
   library_contract: AGENT_READINESS_JOB_LIBRARY_CONTRACT,
   library_version: "2026-10-12.2",
   jobs: [
-    madeAndReadBack({
+    {
       job_id: "bounty-claim",
       category: "bounty-board",
       name: "Claim a bounty",
-      statement: "Claim an open bounty with a note that is the run's nonce, then read the claim back.",
-      made: "bounty_claimed",
-      made_statement: "The board accepts the claim under an identifier it returns or was given.",
-      read_back_statement: "The claim reads back under that identifier with the nonce as its note."
-    }),
+      statement: "Claim an open bounty, then read the returned claim back for that bounty and claimant.",
+      inputs: [
+        { kind: "supplied", name: "bounty" },
+        { kind: "supplied", name: "claimant" }
+      ],
+      assertions: [
+        {
+          name: "bounty_claimed",
+          statement: "The board returns the claim's identifier.",
+          proof: "resource_created"
+        },
+        {
+          name: "read_back",
+          statement: "The returned claim reads back for the bounty and claimant the run supplied.",
+          proof: "claim_read_back"
+        }
+      ],
+      observation_links: [
+        {
+          from: { assertion: "bounty_claimed", observation: "id" },
+          to: { assertion: "read_back", observation: "created_id" }
+        }
+      ],
+      effect: "consequential",
+      // A claim is a commitment to work, not a disposable CRUD resource. The caller chooses
+      // the bounty for a deliberate run; the Action never schedules retained consequences.
+      cleanup: "none"
+    },
     madeAndReadBack({
       job_id: "bucket-create",
       category: "cloud-platform",
@@ -61744,7 +61804,8 @@ var ownTokenSchema = external_exports.object({
   repository_owner_id: external_exports.string(),
   run_id: external_exports.string(),
   run_attempt: external_exports.string(),
-  repository_visibility: external_exports.enum(["public", "private", "internal"])
+  repository_visibility: external_exports.enum(["public", "private", "internal"]),
+  event_name: external_exports.string()
 });
 var INTAKE_PATIENCE_MS = 15 * 60 * 1e3;
 var INTAKE_POLL_MS = 5e3;
@@ -61767,6 +61828,9 @@ async function runAgentReadinessAction(input2, host) {
   assertChallenge(challenge, input2, own2);
   host.log(`Challenge ${challenge.challenge_id} for ${input2.profileId}, binding ${input2.bindingId}.`);
   const { job, binding } = { job: challenge.job.job, binding: challenge.binding.binding };
+  const eventRefusal = agentReadinessRunEventRefusal(job, own2.event_name);
+  if (eventRefusal !== null)
+    throw new Error(`The job didn't start: ${eventRefusal}`);
   const endpoints = new Map(challenge.endpoints.map(({ endpoint_id, uri }) => [endpoint_id, uri]));
   const { entries, publicClientId, read, missing } = agentReadinessCredentialEntries({
     binding,

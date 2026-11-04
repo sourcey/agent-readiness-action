@@ -13,14 +13,21 @@ results itself, and your report card shows the job verified.
 
 1. Open your report card on sourcey.com and choose **Verify the job**. The page
    shows the workflow for your job, filled in: the profile, the binding, the
-   release commit to pin, and a day and time each month of its own, so runs
-   spread out.
-2. Save it as `.github/workflows/sourcey-agent-readiness.yml` on your
-   repository's default branch.
+   release commit to pin, and whether it can run monthly.
+2. Save it under the workflow filename the page shows on your repository's
+   default branch. Each report card and binding has its own filename.
 3. In **Settings → Secrets and variables → Actions**, add the repository
-   secret `SOURCEY_AGENT_READINESS_CREDENTIALS` (see below).
+   secret under the name the page shows (see below).
 4. Run it now from **Actions → Agent Readiness → Run workflow**. After that it
-   runs once a month on its own.
+   runs once a month on its own if the job can be repeated safely.
+
+A job that keeps a consequential result, such as claiming a bounty, runs only
+when you start it with **Run workflow**. Supply the bounty and claimant you
+intend to use. The Action refuses scheduled runs and other automatic events
+before making any request to the service. It does not invent a cancellation
+API or treat an operator's later cleanup as part of the worker's capabilities.
+`workflow_dispatch` can also be invoked through GitHub's API; it is not proof
+that a person clicked a button. Do not automate dispatches for these jobs.
 
 The card shows the job verified with the date of the last run that did it.
 When a run doesn't do the job, the workflow fails, so GitHub tells you, and the
@@ -63,9 +70,10 @@ page lists exactly what yours needs:
 { "account_key": "..." }
 ```
 
-The Action refuses a secret that misses one of these or adds another, and any
-value shorter than 8 characters, which it couldn't keep out of what a service
-sends back. Every value is masked in the job's log.
+The Action refuses a secret that misses one of these or adds another. Credential
+values must be at least 8 characters so custody can keep them out of a service's
+response. Supplied inputs, such as a bounty number, need only be non-empty.
+Every value is masked in the job's log.
 
 ### A refresh token that changes on each use
 

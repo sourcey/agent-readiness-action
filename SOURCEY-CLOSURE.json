@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "dist/contracts/agent-readiness/src/binding.js",
-      "sha256": "sha256:b2298116decbe1cfb16036f7a68f10795e6ac2ad66f4a067ee07526472b399e2"
+      "sha256": "sha256:b64a9a69edbec5ff0d15bcb0629424edafdf0d6fcd89b84842e9d55008dd0b7c"
     },
     {
       "path": "dist/contracts/agent-readiness/src/declaration-reference.js",
@@ -16,7 +16,7 @@
     },
     {
       "path": "dist/contracts/agent-readiness/src/jobs.js",
-      "sha256": "sha256:8e7b38d5e8340e5527506cfd3b2f66444eabdb7f257f2006d1c8e5ac0f7afd40"
+      "sha256": "sha256:bdfa2f7235d5af945940f77546e4b92b3f43d3969ca1b7ad11bbe8d4267f9a7e"
     },
     {
       "path": "dist/contracts/agent-readiness/src/operation.js",
@@ -36,7 +36,7 @@
     },
     {
       "path": "dist/contracts/agent-readiness/src/verified-run.js",
-      "sha256": "sha256:7734568664a54b70e5a08552ef8be55ec21565d7e36f345d84f463e451c625ba"
+      "sha256": "sha256:33cf7cf6d0e5f52b3880048ae7bebd6ac2aafb23b2bda991efe723954287224d"
     },
     {
       "path": "dist/contracts/api/src/values.js",
@@ -84,7 +84,7 @@
     },
     {
       "path": "dist/modules/agent-readiness-jobs/src/index.js",
-      "sha256": "sha256:acfa3e5ee286c99128170b29526eb5365dd8a084e5082d4d7bc1b194a339e9d4"
+      "sha256": "sha256:d462ab6678f876094d94e648761fef2356528137d93b4784b0cba3b5d194c5d3"
     },
     {
       "path": "dist/modules/catalog-primitives/src/index.js",
@@ -92,7 +92,7 @@
     },
     {
       "path": "dist/packages/agent-readiness-action/src/action.js",
-      "sha256": "sha256:50385e7d59f8374162b57113f25ca695e6af67b4b51217ca4cc290accae89400"
+      "sha256": "sha256:5becd0a844eceaa604caaa8494e0423ee11cb9986bd9d025389d67774079366a"
     },
     {
       "path": "dist/packages/agent-readiness-action/src/run.js",
@@ -103,5 +103,5 @@
       "sha256": "sha256:14a95fb4205f099193b75c6c94ccc1aafc23eda059a4181bac33730f9da596f4"
     }
   ],
-  "closure_digest": "sha256:b6b553e1b69d4377d2929bc1c4fdf127191c012daf22a9d99f8da80b1df7d80c"
+  "closure_digest": "sha256:720d91eb5299d9d364ff88befdd1dd0a751fd9148185279f5c626e0bb151f94d"
 }
