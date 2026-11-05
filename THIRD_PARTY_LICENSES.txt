@@ -3311,7 +3311,7 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 
 ------------------------------------------------------------------------
 
-zod@4.6.5 (MIT)
+zod@4.6.7 (MIT)
 
 MIT License
 

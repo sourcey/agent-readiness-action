@@ -2,6 +2,11 @@
 
 Each version is a tag of this repository, and a workflow pins the tag's full commit.
 
+## 1.0.5
+
+- Use Zod 4.6.7 and the matching Almanac dependency closure. The workflow,
+  credential handling and grading policy are unchanged.
+
 ## 1.0.4
 
 - The workflow locates its own exact code using GitHub's default identity-token
