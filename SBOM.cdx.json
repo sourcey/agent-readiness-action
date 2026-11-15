@@ -813,13 +813,13 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "5d129ba68c97e4314d8ffda8ee7c6f28a65d477e29428b7d0693e1b5536dd1e4d63c777fbbc2dee82c96f1fe0b352ff1894bd1e07191c8cb4bbc48674332d639"
+          "content": "232649ee98dc19570136c5edfa252d5726c3719d0c7cdead10fd5aca0c19099bfa1035bc0d0592f1918c336939504c2cf4393489d6ff75fd8f9204133289605c"
         }
       ],
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://artifacts.sourcey.com/almanac/sha256-7b1a476c43f2c11b44f78cc92afd66538e9c7a864349950b3a377dcb60e7dbcb/almanac-sha256-7b1a476c43f2c11b44f78cc92afd66538e9c7a864349950b3a377dcb60e7dbcb.tar.gz"
+          "url": "https://artifacts.sourcey.com/almanac/sha256-d2535b58f9406e8a1797a5508451d13975cb0ae6dcea9b3160113b5ec8753e17/almanac-sha256-d2535b58f9406e8a1797a5508451d13975cb0ae6dcea9b3160113b5ec8753e17.tar.gz"
         }
       ]
     },
