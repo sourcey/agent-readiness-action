@@ -40,7 +40,7 @@
     },
     {
       "path": "dist/contracts/api/src/values.js",
-      "sha256": "sha256:19e732cceffb1534106961bce4dae80b23d985faa161561791649b75955f9fc9"
+      "sha256": "sha256:054343466ff93b713d4c785395aa0774c93ff701b1dc1d3eda088656102219a4"
     },
     {
       "path": "dist/contracts/authoring/src/index.js",
@@ -103,5 +103,5 @@
       "sha256": "sha256:14a95fb4205f099193b75c6c94ccc1aafc23eda059a4181bac33730f9da596f4"
     }
   ],
-  "closure_digest": "sha256:720d91eb5299d9d364ff88befdd1dd0a751fd9148185279f5c626e0bb151f94d"
+  "closure_digest": "sha256:6e671915f77031d919d5f8f5974bf3b2abeef018e63e4306d3bf838820612624"
 }

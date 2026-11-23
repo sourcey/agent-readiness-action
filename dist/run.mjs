@@ -60291,6 +60291,7 @@ var catalogApiErrorCodeSchema = external_exports.enum([
   "payment_refused",
   "product_unavailable",
   "rate_limited",
+  "release_changed",
   "service_unavailable",
   "standing_stale"
 ]);
