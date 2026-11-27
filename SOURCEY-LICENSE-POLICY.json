@@ -5,6 +5,7 @@
     "Apache-2.0",
     "BSD-2-Clause",
     "BSD-3-Clause",
+    "BlueOak-1.0.0",
     "ISC",
     "MIT",
     "Unlicense"
@@ -17,6 +18,14 @@
       "path": "README.md",
       "sha256": "sha256:7e3484a07c208b5c5813290a993244c6841efc3d4241c29a07ef948e8129a758",
       "reason": "Upstream ships its MIT license notice in README.md and no separate license file; pulled by fast-xml-parser for safe submitted SVG inspection."
+    },
+    {
+      "package": "imurmurhash",
+      "version": "0.1.4",
+      "license": "MIT",
+      "path": "README.md",
+      "sha256": "sha256:4491517f7deb68d0b2a3bb590e785e276a60f12448447a9650d0bd50161a101c",
+      "reason": "Upstream ships its full MIT license and copyright notice in README.md, with no separate license file. Pulled by the attestation SDK through make-fetch-happen."
     }
   ],
   "supplied_license_texts": [
@@ -33,6 +42,20 @@
       "license": "Apache-2.0",
       "path": "distributions/licenses/sigstore-verify-3.1.1.txt",
       "reason": "Upstream declares Apache-2.0 in package.json and its package ships no license text; this is sigstore-js's root LICENSE at the release's commit (1a8709a), byte-identical to the text @sigstore/core ships. Pulled by provenry's GitHub Actions verifiers."
+    },
+    {
+      "package": "@npmcli/agent",
+      "version": "3.0.0",
+      "license": "ISC",
+      "path": "distributions/licenses/npmcli-agent-3.0.0.txt",
+      "reason": "Upstream declares ISC and author GitHub Inc. in package.json but ships no license text in its package or at release commit 94f346d882458ac9481d015c55057d15f5899bf1; this is the standard ISC text naming that declared author. Pulled by the attestation SDK through make-fetch-happen."
+    },
+    {
+      "package": "eastasianwidth",
+      "version": "0.2.0",
+      "license": "MIT",
+      "path": "distributions/licenses/eastasianwidth-0.2.0.txt",
+      "reason": "Upstream declares MIT and author Masaki Komagata in package.json but ships no license text in its package or at release commit b89f04d44dc786885615e94cd6e2ba1ef7866fa4; this is the standard MIT text naming that declared author. Pulled by the attestation SDK through make-fetch-happen."
     }
   ]
 }

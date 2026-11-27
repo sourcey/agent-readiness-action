@@ -2,6 +2,11 @@
 
 Each version is a tag of this repository, and a workflow pins the tag's full commit.
 
+## 1.1.1
+
+- Use the attestation SDK's native timestamp transport for private-repository runs.
+- Include locked optional dependencies in the published dependency and license inventory.
+
 ## 1.1.0
 
 - Submit attested job evidence through a verification pull request. Sourcey

@@ -36,7 +36,7 @@
     "properties": [
       {
         "name": "sourcey:distribution-definition-sha256",
-        "value": "sha256:bd294ad80f8806d7124a8b60ae7a902ffc91944a81d29c704fc3d8f4e5866647"
+        "value": "sha256:4061a5f02d1e2c746f6862eb1eb7656e46e0e841262752af8c9fe84abd72dabd"
       },
       {
         "name": "sourcey:toolchain-sha256",
@@ -44,7 +44,7 @@
       },
       {
         "name": "sourcey:license-policy-sha256",
-        "value": "sha256:8af9408a6aa99084144722d97c73a813c2b2bff7190aecdf1da078948590c486"
+        "value": "sha256:21328c7278aa18b69e48a98bb01a3272cea419d8039f5bc60b1f74ee019c19a4"
       }
     ]
   },
@@ -221,6 +221,106 @@
         {
           "type": "distribution",
           "url": "https://registry.npmjs.org/@actions/io/-/io-3.0.2.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40isaacs/cliui@8.0.2",
+      "group": "@isaacs",
+      "name": "cliui",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "8.0.2",
+      "purl": "pkg:npm/%40isaacs/cliui@8.0.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3bc8dc8da6d76a578e1bd0d0d3e0115d66414df9cfe16340ab3ba224aee5978e009b118abff2763384cf8f18d8df39c109fbc15c5cee726d6dc1dc85c9b16a10"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@isaacs/cliui/-/cliui-8.0.2.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40isaacs/fs-minipass@4.0.1",
+      "group": "@isaacs",
+      "name": "fs-minipass",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "4.0.1",
+      "purl": "pkg:npm/%40isaacs/fs-minipass@4.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "c209bd1219768e97aa3f7cf0ffb9a8de4447169e4c10386a01dc32d5f4c69070309e418e56c829bd084bf01e67d6a95bd358d5de7fdb23465f669e65580d64e3"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@isaacs/fs-minipass/-/fs-minipass-4.0.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40npmcli/agent@3.0.0",
+      "group": "@npmcli",
+      "name": "agent",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "3.0.0",
+      "purl": "pkg:npm/%40npmcli/agent@3.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4bbf4d74480341dfcd1826b2e930a85735d28fbe2c9116482897292630b994eab7e12673c88e8caad8a25a88955a856b4dc1a335e0b88a96e1d552079697c5e5"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@npmcli/agent/-/agent-3.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/%40npmcli/fs@4.0.0",
+      "group": "@npmcli",
+      "name": "fs",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "4.0.0",
+      "purl": "pkg:npm/%40npmcli/fs@4.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "ff11a57b323ac5f18ef4dc2e2659f0cff2b5e2a0f59024801ad69c0479c6cde008b8919acdca78e4a3f936ec80457a0a6fb730ba5006595b1b792c5d1bf71bd1"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@npmcli/fs/-/fs-4.0.0.tgz"
         }
       ]
     },
@@ -601,6 +701,31 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:npm/%40pkgjs/parseargs@0.11.0",
+      "group": "@pkgjs",
+      "name": "parseargs",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "0.11.0",
+      "purl": "pkg:npm/%40pkgjs/parseargs@0.11.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "fb55648dd0f44012cfa1d1ab2547aa6ab1fc54022f40e0c86f087d5e93f94b28ac7fb628420b0928f345a2aa8b425bbe550fed552b21311ea5a0f327f14f9d3e"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:npm/%40sigstore/bundle@3.1.0",
       "group": "@sigstore",
       "name": "bundle",
@@ -801,6 +926,30 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:npm/agent-base@7.1.4",
+      "name": "agent-base",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "7.1.4",
+      "purl": "pkg:npm/agent-base@7.1.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "32703e613f1fc1f24f801c779bad0c36a6a49b7d173a4c88a07d72ea1b9342f0b43f0646ee48bc35a70b05cacf6cda28f2f119cbb269ba4efe8cc3be094a2f4d"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/agent-base/-/agent-base-7.1.4.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:npm/almanac@0.0.0",
       "name": "almanac",
       "licenses": [
@@ -813,13 +962,13 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "c6fa9b8b28a3eaa987b5bf08e4c41c806629655e581a78a2ea09fd343ece4d3ac56dec628a91022f3c9f8811dcb2d2e58d35ac2852af7e390def145647db1d47"
+          "content": "4b243b6bf6b4d6b1cd33b1e8a2b6f28e950654a76eb0f4e17799b6b9ddb191529e8b47f457511cda1e2eef127232da7176bf2972fe86964f78b65fb3aa3ebf2f"
         }
       ],
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://artifacts.sourcey.com/almanac/sha256-a1bc2ed44a053d9e69421174372a97f19ab418a56f864f94d4f35829e69d50f1/almanac-sha256-a1bc2ed44a053d9e69421174372a97f19ab418a56f864f94d4f35829e69d50f1.tar.gz"
+          "url": "https://artifacts.sourcey.com/almanac/sha256-97735b04a2a0a2434594700f58c046fdd3eb5a4661031bd8e119423a45e6374f/almanac-sha256-97735b04a2a0a2434594700f58c046fdd3eb5a4661031bd8e119423a45e6374f.tar.gz"
         }
       ]
     },
@@ -845,6 +994,78 @@
         {
           "type": "distribution",
           "url": "https://registry.npmjs.org/@noble/hashes/-/hashes-2.4.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/ansi-regex@6.4.0",
+      "name": "ansi-regex",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "6.4.0",
+      "purl": "pkg:npm/ansi-regex@6.4.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "2b34d5936b425801ed62bbefbda3fc6c9289ab6a558a784b70611076d2c860f6e634637261ef10c0d693518429d89effbc8b142ade500aa01f5246321bd0e43b"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-6.4.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/ansi-styles@6.2.3",
+      "name": "ansi-styles",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "6.2.3",
+      "purl": "pkg:npm/ansi-styles@6.2.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "e038fa336f0907ea001fc9059132d4a3e6b68f038592ea9bdf2b9c53408035c45151bc52d1c3f49d96021a371cdc1357c1122c5159831a0cdac267bbcef247be"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-6.2.3.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/balanced-match@1.0.2",
+      "name": "balanced-match",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "1.0.2",
+      "purl": "pkg:npm/balanced-match@1.0.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "de849e50ed13315ebb84dd4099b5ec2b8c9aa94eed8e21e56f144364ea47d0a5bdf82797e1b440697d009f1b74b71d8cae94695b041a3f02252121098585393f"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
         }
       ]
     },
@@ -898,6 +1119,126 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:npm/brace-expansion@2.1.7",
+      "name": "brace-expansion",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "2.1.7",
+      "purl": "pkg:npm/brace-expansion@2.1.7",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b996dec3536a7663c34cc27c6a1d72f9bfbd40426b7e45c593745c4d0c375f48d6ff1454bc52ac83509f41d49819d4db5d9584c6d53727771cc6d9dfc35162d2"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.7.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/cacache@19.0.1",
+      "name": "cacache",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "19.0.1",
+      "purl": "pkg:npm/cacache@19.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "85db14c6e9570a2e524c877bf2f455604b43023abdf48080524b4b4de4d8b0ba1313a67c752d1cf2958d0b1c1dae4f587c97a86c365cd98d7cea10ffe5942015"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/cacache/-/cacache-19.0.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/chownr@3.0.0",
+      "name": "chownr",
+      "licenses": [
+        {
+          "expression": "BlueOak-1.0.0"
+        }
+      ],
+      "version": "3.0.0",
+      "purl": "pkg:npm/chownr@3.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "f88c7363d05939077f5ee60f466aef1158c5fe7aa3e64813e2412aed5a1fac3a0cd4cc6846311692b082dc4b4b8b9f5355ac314c09fea2b27015072ba84375fa"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/chownr/-/chownr-3.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/color-convert@2.0.1",
+      "name": "color-convert",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "2.0.1",
+      "purl": "pkg:npm/color-convert@2.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4511023ec8fb8aeff16f9a0a61cb051d2a6914d9ec8ffe763954d129be333f9a275f0545df3566993a0d70e7c60be0910e97cafd4e7ce1f320dfc64709a12529"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/color-name@1.1.4",
+      "name": "color-name",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "1.1.4",
+      "purl": "pkg:npm/color-name@1.1.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "74ecbedc0b96ddadb035b64722e319a537208c6b8b53fb812ffb9b71917d3976c3a3c7dfe0ef32569e417f479f4bcb84a18a39ab8171edd63d3a04065e002c40"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:npm/content-type@3.1.1",
       "name": "content-type",
       "licenses": [
@@ -917,6 +1258,126 @@
         {
           "type": "distribution",
           "url": "https://registry.npmjs.org/content-type/-/content-type-3.1.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/cross-spawn@7.0.6",
+      "name": "cross-spawn",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "7.0.6",
+      "purl": "pkg:npm/cross-spawn@7.0.6",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b95d903963f69d6ceccb668ca7c69189b862f5d9731791e0879487681f4e893184c834e2249cb1d2ecb9d505ddc966ed00736e6b85c9cd429c6b73b3294777bc"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/debug@4.4.3",
+      "name": "debug",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "4.4.3",
+      "purl": "pkg:npm/debug@4.4.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "446c305a7c10be455f6af295b76d8518bc3ec5849dcc04709b4aeee83853540dee994e6165cdbc57790ee2cb6062bcab4e52e9baf808f468a28e5b408cd6dca8"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/debug/-/debug-4.4.3.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/eastasianwidth@0.2.0",
+      "name": "eastasianwidth",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "0.2.0",
+      "purl": "pkg:npm/eastasianwidth@0.2.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "23cf1361959cf578981d1438ff7739ae38df8248e12f25b696e18885e18445b350e8e63bc93c9b6a74a90d765af32ed550ff589837186be7b2ab871aee22ea58"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/eastasianwidth/-/eastasianwidth-0.2.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/emoji-regex@9.2.2",
+      "name": "emoji-regex",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "9.2.2",
+      "purl": "pkg:npm/emoji-regex@9.2.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "2f5f03689b17494936fb8da9bfc98bb398c94f686a164144e23db5c0e9a06d4aac67684bef636c514efce60f515e0a37b3464d815978d93887a7766d3affd5ca"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/emoji-regex/-/emoji-regex-9.2.2.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/encoding@0.1.14",
+      "name": "encoding",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "0.1.14",
+      "purl": "pkg:npm/encoding@0.1.14",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a6a1fe8c8c488705f9538c3e4e7bb78e3a304e8e504c009ba9e7f60b90b0d91840a6bec2390aa09da8b9deef156edaa3591712a007137fbb99eb674ee640bc23"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/encoding/-/encoding-0.1.14.tgz"
         }
       ]
     },
@@ -970,6 +1431,294 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:npm/foreground-child@3.3.1",
+      "name": "foreground-child",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "3.3.1",
+      "purl": "pkg:npm/foreground-child@3.3.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "8085e32aab45b96120cc544903d58241e4892d90e380950e302333c6dbc5abfdfb2a88ccd41146b9faac0b2d2be2a4909982ec65831ec91ab321638cba9d37b3"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/foreground-child/-/foreground-child-3.3.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/fs-minipass@3.0.3",
+      "name": "fs-minipass",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "3.0.3",
+      "purl": "pkg:npm/fs-minipass@3.0.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5d4040f570a51db9c95927c1ce3926e91bcfb32837b2bc99b74e81110a17705ec42bfc6919a41826040a0c94941f948667be98ee9171d500675f3d3dad4e456f"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/fs-minipass/-/fs-minipass-3.0.3.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/glob@10.5.0",
+      "name": "glob",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "10.5.0",
+      "purl": "pkg:npm/glob@10.5.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0df5cdf037e127b347dce7bb7059aedcd0aed7029b911789f13a2bcd20056d22ab94d69048a7c8cea62a558f3395bb3634b05b5a9462539d865f63db68154d92"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/glob/-/glob-10.5.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/http-cache-semantics@4.3.0",
+      "name": "http-cache-semantics",
+      "licenses": [
+        {
+          "expression": "BSD-2-Clause"
+        }
+      ],
+      "version": "4.3.0",
+      "purl": "pkg:npm/http-cache-semantics@4.3.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "339b792e52694b5507323bf045055d147bcf21219e2c0c4d72b5ae2647868742b1b2a0876753b7357654ffcc7b703d010dc196f246a9c4c293bf096aacd90790"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/http-cache-semantics/-/http-cache-semantics-4.3.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/http-proxy-agent@7.0.2",
+      "name": "http-proxy-agent",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "7.0.2",
+      "purl": "pkg:npm/http-proxy-agent@7.0.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4f58240226180d6631dd5e419b2bbb1dc7dcbcbee652b4d688ceb239f6b73c8a6156227f8053dbbe2750faf7aa48e1dc8bf3f105c0da6de50d0b3a4e3832598a"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/http-proxy-agent/-/http-proxy-agent-7.0.2.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/https-proxy-agent@7.0.6",
+      "name": "https-proxy-agent",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "7.0.6",
+      "purl": "pkg:npm/https-proxy-agent@7.0.6",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "bcaf4fe7f8947dd97de4023e255c94b88715b5de287efb6b3abdc736d336cb10bd6e731b11da77c74d4e8503678dbf082588b7f159531379815f071fbf2c2e4b"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/https-proxy-agent/-/https-proxy-agent-7.0.6.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/iconv-lite@0.7.3",
+      "name": "iconv-lite",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "0.7.3",
+      "purl": "pkg:npm/iconv-lite@0.7.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "20a5e9bc8ce39c2f574c051b54170c7c64b410f6885ed5babfecebf91469fa1a942c4a68d28c196b1eb0c91c0f3896d66f38d8b29430bac4ec7d5af489f878b9"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.7.3.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/imurmurhash@0.1.4",
+      "name": "imurmurhash",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "0.1.4",
+      "purl": "pkg:npm/imurmurhash@0.1.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "2665cc67ac2ebc398b88712697dca4cea3ba97015ba1fd061b822470668435d0910c398c5679f2eece47b0880709b6aad30d8cc8f843aa48535204b62d4d8f1c"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/ip-address@10.7.4",
+      "name": "ip-address",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "10.7.4",
+      "purl": "pkg:npm/ip-address@10.7.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0d604c2b278cdb90fbd27ac889392042d879f7f1be9da28e4dea7a86e17d8fe1a678adc3303eb466fc60e5de6a427cfedfc007828bba79a9f62c4097fa5aca0e"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/ip-address/-/ip-address-10.7.4.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/is-fullwidth-code-point@3.0.0",
+      "name": "is-fullwidth-code-point",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "3.0.0",
+      "purl": "pkg:npm/is-fullwidth-code-point@3.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "cf29a6e7ebbeb02b125b20fda8d69e8d5dc316f84229c94a762cd868952e1c0f3744b8dbee74ae1a775d0871afd2193e298ec130096c59e2b851e83a115e9742"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/isexe@2.0.0",
+      "name": "isexe",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "2.0.0",
+      "purl": "pkg:npm/isexe@2.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "447c4c2e9f659ca1c61d19e0f5016144231b600715a67ebdb2648672addfdfac638155564e18f8aaa2db4cb96aed2b23f01f9f210d44b8210623694ab3241e23"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/jackspeak@3.4.3",
+      "name": "jackspeak",
+      "licenses": [
+        {
+          "expression": "BlueOak-1.0.0"
+        }
+      ],
+      "version": "3.4.3",
+      "purl": "pkg:npm/jackspeak@3.4.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "386959429cf6c9f6a103f45dd58f0277d48812caaf5e42d5a12c3f720c219e114c0dbb1015e658a0927b6c86414bd05c6a6516f7a6acabf9e93d6ba033e45007"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/jackspeak/-/jackspeak-3.4.3.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:npm/jose@5.10.0",
       "name": "jose",
       "licenses": [
@@ -1018,6 +1767,414 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:npm/lru-cache@10.4.3",
+      "name": "lru-cache",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "10.4.3",
+      "purl": "pkg:npm/lru-cache@10.4.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "24d03365c5eb0ade365462ee633d337c0cc37c0bc9596e807d8943050c835790c2948da6e6c0262be3883bbb39f577ec46c587a74da3009ad169d3d1193b7a49"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/lru-cache/-/lru-cache-10.4.3.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/make-fetch-happen@14.0.3",
+      "name": "make-fetch-happen",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "14.0.3",
+      "purl": "pkg:npm/make-fetch-happen@14.0.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "40c8c66c54cfd1b963f7b11e89d1b9864fd084a4374f82027244062e0cf7f1017b5606e4e9ee854c044df0a84ac7205b5a7f11d0753e6e7c3c692a053c3e2ab5"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/make-fetch-happen/-/make-fetch-happen-14.0.3.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/minimatch@9.0.9",
+      "name": "minimatch",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "9.0.9",
+      "purl": "pkg:npm/minimatch@9.0.9",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "381c0137d00be1daa61139694b6cdab31faf4de59c956ce46e57d993b2930398f78de38e373fed4429d9a26532bcd83cdf02f966ff52b3a1cc2570202fc47662"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/minimatch/-/minimatch-9.0.9.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/minipass@7.1.3",
+      "name": "minipass",
+      "licenses": [
+        {
+          "expression": "BlueOak-1.0.0"
+        }
+      ],
+      "version": "7.1.3",
+      "purl": "pkg:npm/minipass@7.1.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b44047a839c8a0cff5ad7304d738246bd83a43695ca029311cbb9cece0c9e41c5b3f977873667970682d5c092ee7ddb4d02c7b762b874ce61f4810fc9fa9a6f0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/minipass/-/minipass-7.1.3.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/minipass-collect@2.0.1",
+      "name": "minipass-collect",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "2.0.1",
+      "purl": "pkg:npm/minipass-collect@2.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0fb57c3cef686b3ecf5862db0800ae235a843acabb50a7cba2dc7f0b401eb78ddf09407fc1f43b0d87aada847fb2f1491980c73ebdfc48701379a8ff6682872b"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/minipass-collect/-/minipass-collect-2.0.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/minipass-fetch@4.0.1",
+      "name": "minipass-fetch",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "4.0.1",
+      "purl": "pkg:npm/minipass-fetch@4.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "8fb535d42e475e2815baeb7179b15a7686016dded549d65682049eeb835576f58d06a1808973cbd905427a18e6c3b958d6817d80e96561b39187e8623607cf81"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/minipass-fetch/-/minipass-fetch-4.0.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/minipass-flush@1.0.7",
+      "name": "minipass-flush",
+      "licenses": [
+        {
+          "expression": "BlueOak-1.0.0"
+        }
+      ],
+      "version": "1.0.7",
+      "purl": "pkg:npm/minipass-flush@1.0.7",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4dba93cfd714c16c874b60f2f3d3f7a1c006506c4a8e32ee47dcfcc385944c60158048f5effe27860a360eee7a8b4166dcf9b7d20e2203c2dca9cb5cefa8c2cc"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/minipass-flush/-/minipass-flush-1.0.7.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/minipass@3.3.6",
+      "name": "minipass",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "3.3.6",
+      "purl": "pkg:npm/minipass@3.3.6",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0f188d89dc5210afad1c6eb3388925bcd3b09b786f0ab6d4addb7363be14e87293271bc80df3942f95b93f61a17770d392184a3d81aa78d508879a9c3386017f"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/minipass/-/minipass-3.3.6.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/yallist@4.0.0",
+      "name": "yallist",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "4.0.0",
+      "purl": "pkg:npm/yallist@4.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "df074689d672ab93c1d3ce172c44b94e9392440df08d7025216321ba6da445cbffe354a7d9e990d1dc9c416e2e6572de8f02af83a12cbdb76554bf8560472dec"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/yallist/-/yallist-4.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/minipass-pipeline@1.2.4",
+      "name": "minipass-pipeline",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "1.2.4",
+      "purl": "pkg:npm/minipass-pipeline@1.2.4",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "c6e22aedc20eb74f513d1275f60762e1bf9188dbc31587b9247fa080dbc1a86aa941772bbb73dc466399b8704a58ad53c5ff7e710f8731537877acf8e8b64fec"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/minipass-pipeline/-/minipass-pipeline-1.2.4.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/minipass-sized@1.0.3",
+      "name": "minipass-sized",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "1.0.3",
+      "purl": "pkg:npm/minipass-sized@1.0.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "31b9104360938813250360e6ff9718fbd49614437ca73cce5e2eab94ce57c6ad18a9b75ae59432f6c53be5aebbdc513d64ad19b1bafa63988feaef6792d7e0da"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/minipass-sized/-/minipass-sized-1.0.3.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/minizlib@3.1.0",
+      "name": "minizlib",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "3.1.0",
+      "purl": "pkg:npm/minizlib@3.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "299c58a350549160f64d514baf4310a0cf2f5148a0583dcb943f376bfef906a0bee2a1341dbd55a39bf516071f68d5ef7d7cebfb912143a8a783f09a0628d397"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/minizlib/-/minizlib-3.1.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/ms@2.1.3",
+      "name": "ms",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "2.1.3",
+      "purl": "pkg:npm/ms@2.1.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "e85973b9b4cb646dc9d9afcd542025784863ceae68c601f268253dc985ef70bb2fa1568726afece715c8ebf5d73fab73ed1f7100eb479d23bfb57b45dd645394"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/negotiator@1.1.0",
+      "name": "negotiator",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "1.1.0",
+      "purl": "pkg:npm/negotiator@1.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "34c3c144c2608901e36ddf29846dd579b771e246751f5db5adb97922432a78eb1a869b41f412a8fddee8277cd35ea4e06a09f66d694d497921d10506337d5162"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/negotiator/-/negotiator-1.1.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/content-type@2.1.0",
+      "name": "content-type",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "2.1.0",
+      "purl": "pkg:npm/content-type@2.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9a3ed43d71348daa9a3acba435945411f122d8070bec2fefc26c1c1d5d0ef7b78ed44d69c4166eca3959af1e6c79368d060d54ebea37e70a5adf941f71cfbb6a"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/content-type/-/content-type-2.1.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/p-map@7.1.1",
+      "name": "p-map",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "7.1.1",
+      "purl": "pkg:npm/p-map@7.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "e8b8778d03cbb6162e8d2ae5c3a71c5970466539284c2cf6ec777dda0efd2c7fe48c06e0a04bb4b78e3670208d6de80f489b00d25c035fccf46dc2ad929037da"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/p-map/-/p-map-7.1.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/package-json-from-dist@1.0.1",
+      "name": "package-json-from-dist",
+      "licenses": [
+        {
+          "expression": "BlueOak-1.0.0"
+        }
+      ],
+      "version": "1.0.1",
+      "purl": "pkg:npm/package-json-from-dist@1.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5046484b7fdbcb8382f2f2f73f67535d1113a5e6cb236362239bc8ae3683ff952dae4157fed35bc234d2440182ffeec2028da921c05a4605a670104772c68223"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/package-json-from-dist/-/package-json-from-dist-1.0.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:npm/parse5@8.0.1",
       "name": "parse5",
       "licenses": [
@@ -1037,6 +2194,54 @@
         {
           "type": "distribution",
           "url": "https://registry.npmjs.org/parse5/-/parse5-8.0.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/path-key@3.1.1",
+      "name": "path-key",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "3.1.1",
+      "purl": "pkg:npm/path-key@3.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a2399e374a9dfb2d23b3312da18e3caf43deab97703049089423aee90e5fe3595f92cc17b8ab58ae18284e92e7c887079b6e1486ac7ee53aa6d889d2c0b844e9"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/path-key/-/path-key-3.1.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/path-scurry@1.11.1",
+      "name": "path-scurry",
+      "licenses": [
+        {
+          "expression": "BlueOak-1.0.0"
+        }
+      ],
+      "version": "1.11.1",
+      "purl": "pkg:npm/path-scurry@1.11.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5dae0dc35ec54bd02940527dba62e2252e28ac68e6ed9cf052bc1a99c190b874b30f2b61f5ba0a0dac9c61d0dc643baa6004d7c381c55e06aa59372d5bfbf51c"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/path-scurry/-/path-scurry-1.11.1.tgz"
         }
       ]
     },
@@ -1138,6 +2343,390 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:npm/safer-buffer@2.1.2",
+      "name": "safer-buffer",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "2.1.2",
+      "purl": "pkg:npm/safer-buffer@2.1.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "619a372bcd920fb462ca2d04d4440fa232f3ee4a5ea6749023d2323db1c78355d75debdbe5d248eeda72376003c467106c71bbbdcc911e4d1c6f0a9c42b894b6"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/semver@7.8.5",
+      "name": "semver",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "7.8.5",
+      "purl": "pkg:npm/semver@7.8.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "63bfca0ec6fc2e3a28669c1aa86cae94ee8342592c8029dc7211c693eb19218e1206f52870c044147e54af57c8e1d57e26f974c3a723bee71a222e34a6e462a0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/shebang-command@2.0.0",
+      "name": "shebang-command",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "2.0.0",
+      "purl": "pkg:npm/shebang-command@2.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "907c6bdb366962d766acdd6a0e3aeb5ff675ad1d641bc0f1fa09292b51b87979af5ecc26704d614d6056614ce5ada630d7fc99a7a62e0d8efb62dbdb3747660c"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/shebang-command/-/shebang-command-2.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/shebang-regex@3.0.0",
+      "name": "shebang-regex",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "3.0.0",
+      "purl": "pkg:npm/shebang-regex@3.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "efef9d161b5cc77df9dee05aabc0c347836ec417ad0730bb6503a19934089c711de9b4ab5dd884cb30af1b4ed9e3851874b4a1594c97b7933fca1cfc7a471bd4"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/shebang-regex/-/shebang-regex-3.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/signal-exit@4.1.0",
+      "name": "signal-exit",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "4.1.0",
+      "purl": "pkg:npm/signal-exit@4.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "6f3c99d5ef3cc3d3b588d25b2a73a5bd84eb58f0e5e3a3b56c6d03dd7227bfef6d90faf1acdf235144e21650e4926296827d4ce827c8035dd2b86a8e6bd2a8af"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/signal-exit/-/signal-exit-4.1.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/smart-buffer@4.2.0",
+      "name": "smart-buffer",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "4.2.0",
+      "purl": "pkg:npm/smart-buffer@4.2.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "f7884ad0787cacfa90976c577371ec681a0e5ca576d0c4e83e4717bf06c84962c4b3eeb8b01ab9905827da42431dbd4faf2f72acfd1dc6b088f5145c8bb4572a"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/smart-buffer/-/smart-buffer-4.2.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/socks@2.8.10",
+      "name": "socks",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "2.8.10",
+      "purl": "pkg:npm/socks@2.8.10",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "7b4572be4553c1561588da2f46467d6a8761c55972a0c9fb78985550fc59f9e2bd3ffec2064c6fbec04e1ea14f107e35ebbdba5bcb4b5d75e32b0aa04c4aeb09"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/socks/-/socks-2.8.10.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/socks-proxy-agent@8.0.5",
+      "name": "socks-proxy-agent",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "8.0.5",
+      "purl": "pkg:npm/socks-proxy-agent@8.0.5",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "1de84212ca2d16a6cf5bdb09f1655807a51b98832fee4514391205d8d9dcab8550bc17cd04b89b5bd619479765602494870703eb6f29465966ee7f84f984f327"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/socks-proxy-agent/-/socks-proxy-agent-8.0.5.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/ssri@12.0.0",
+      "name": "ssri",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "12.0.0",
+      "purl": "pkg:npm/ssri@12.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4bb886368b1ea71f5169d5fcda88a6524bebd02b7b22325b11bb38989713c6cb7cba6f79277b03614d510443af76eea82f559e9363832398b8300c3e759e9c01"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/ssri/-/ssri-12.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/string-width@5.1.2",
+      "name": "string-width",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "5.1.2",
+      "purl": "pkg:npm/string-width@5.1.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "1e72ce091def8dc63c6dea0d2ed723679fe7c67d9a7e6304ea586b0eb79ba24a8c6a9f976de5bc9fd4d7a4f0cea9d18ae6a708de84f418a4d6eb00bb10c895a8"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/string-width/-/string-width-5.1.2.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/string-width@4.2.3",
+      "name": "string-width",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "4.2.3",
+      "purl": "pkg:npm/string-width@4.2.3",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "c0ac90450a63274b08a7ad84ad265d1ac8cc256b1aa79a1136284786ee86ec954effd8c807a5327af2feb57b8eaab9e0f23fdcc4a4d6c96530bd24eb8a2673fe"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/ansi-regex@5.0.1",
+      "name": "ansi-regex",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "5.0.1",
+      "purl": "pkg:npm/ansi-regex@5.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "aae2505e54d25062f62c7f52517a3c570b18e2ca1a9e1828e8b3529bce04d4b05c13cb373b4c29762473c91f73fd9649325316bf7eea38e6fda5d26531410a15"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/emoji-regex@8.0.0",
+      "name": "emoji-regex",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "8.0.0",
+      "purl": "pkg:npm/emoji-regex@8.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3128d8cdc58d380d1ec001e9cf4331a5816fc20eb28f2d4d1b7c6d7a8ab3eb8e150a8fd13e09ebd7f186b7e89cde2253cd0f04bb74dd335e126b09d5526184e8"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/strip-ansi@6.0.1",
+      "name": "strip-ansi",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "6.0.1",
+      "purl": "pkg:npm/strip-ansi@6.0.1",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "637f153d21dcaa416b0a916743dbee4979aabaebf9a1738aa46793e9a1abaf7a3719cf409556ba2417d448e0a76f1186645fbfd28a08ecaacfb944b3b54754e4"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/strip-ansi@7.2.0",
+      "name": "strip-ansi",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "7.2.0",
+      "purl": "pkg:npm/strip-ansi@7.2.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "c833cc363a785b27d80641e78c844b7dc6b58ba28cc860adb1582829eff3d7eeafba481a10d76018166df9998a3dce206afbc46793a01df1ddadace180dc86ef"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-7.2.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/tar@7.5.22",
+      "name": "tar",
+      "licenses": [
+        {
+          "expression": "BlueOak-1.0.0"
+        }
+      ],
+      "version": "7.5.22",
+      "purl": "pkg:npm/tar@7.5.22",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3053bf433bed00e9896e484e6824ef6c670537d2fd6fe26e9c8b03c1a2a58d239d70b31e6b7349d64f54b33feb8dd7d25d3ab875fcdf792ed6e29e1838000778"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/tar/-/tar-7.5.22.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:npm/tunnel@0.0.6",
       "name": "tunnel",
       "licenses": [
@@ -1210,6 +2799,54 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:npm/unique-filename@4.0.0",
+      "name": "unique-filename",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "4.0.0",
+      "purl": "pkg:npm/unique-filename@4.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "5d29c47b05e643ebde3fbc57d9d4b9438c9902f3b8d1c04dd8c5a427b0ffeac5b80e0eb060137033556b9f3d45847e4075e2c89545d123d7b6f33d58662ef535"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/unique-filename/-/unique-filename-4.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/unique-slug@5.0.0",
+      "name": "unique-slug",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "5.0.0",
+      "purl": "pkg:npm/unique-slug@5.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "f4e75aa8ee64c2a47ed645601c086ca79bcf354d219f145adbaac114d7cd80ceccea936d8337819f7b3fc5bc8240bddd723cce6ad71e7fa5141e907fe8c6844e"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/unique-slug/-/unique-slug-5.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:npm/universal-user-agent@7.0.3",
       "name": "universal-user-agent",
       "licenses": [
@@ -1229,6 +2866,126 @@
         {
           "type": "distribution",
           "url": "https://registry.npmjs.org/universal-user-agent/-/universal-user-agent-7.0.3.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/which@2.0.2",
+      "name": "which",
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ],
+      "version": "2.0.2",
+      "purl": "pkg:npm/which@2.0.2",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "04b2374e5d535b73ef97bd25df2ab763ae22f9ac29c17aac181616924a8cb676d782b303fb28fbae15b492e103c7325a6171a3116e6881aa4a34c10a34c8e26c"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/which/-/which-2.0.2.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/wrap-ansi@8.1.0",
+      "name": "wrap-ansi",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "8.1.0",
+      "purl": "pkg:npm/wrap-ansi@8.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b22ed0588eb350cab9e9b11216f6a0b66ccc7463ada317d1f927b3d753286df73bb66f9591472493d6d6d9479f7d319551b3a4b31992c34000da0b3c83bd4d09"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-8.1.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/wrap-ansi@7.0.0",
+      "name": "wrap-ansi",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "7.0.0",
+      "purl": "pkg:npm/wrap-ansi@7.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "6151888f691a98b493c70e8db198e80717d2c2c9f4c9c75eb26738a7e436d5ce733ee675a65f8d7f155dc4fb5d1ef98d54e43a5d2606e0052dcadfc58bb0f5e9"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/ansi-styles@4.3.0",
+      "name": "ansi-styles",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "version": "4.3.0",
+      "purl": "pkg:npm/ansi-styles@4.3.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "cdb07dac22404f5adb8e25436f686a2851cd60bc60b64f0d511c59dc86700f717a36dc5b5d94029e74a2d4b931f880e885d3e5169db6db05402c885e64941212"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.3.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/yallist@5.0.0",
+      "name": "yallist",
+      "licenses": [
+        {
+          "expression": "BlueOak-1.0.0"
+        }
+      ],
+      "version": "5.0.0",
+      "purl": "pkg:npm/yallist@5.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "620bd44dfc2ac9ced45d532b07e4889ac5584a64d2f17fed4abb5d35930898cfa7efe413ae2457c978a6d2606b4d735eab3545d0a5868073de8b2562145acd0f"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/yallist/-/yallist-5.0.0.tgz"
         }
       ]
     },
@@ -1322,6 +3079,39 @@
     {
       "ref": "pkg:npm/%40actions/io@3.0.2",
       "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/%40isaacs/cliui@8.0.2",
+      "dependsOn": [
+        "pkg:npm/string-width@4.2.3",
+        "pkg:npm/string-width@5.1.2",
+        "pkg:npm/strip-ansi@6.0.1",
+        "pkg:npm/strip-ansi@7.2.0",
+        "pkg:npm/wrap-ansi@7.0.0",
+        "pkg:npm/wrap-ansi@8.1.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40isaacs/fs-minipass@4.0.1",
+      "dependsOn": [
+        "pkg:npm/minipass@7.1.3"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40npmcli/agent@3.0.0",
+      "dependsOn": [
+        "pkg:npm/agent-base@7.1.4",
+        "pkg:npm/http-proxy-agent@7.0.2",
+        "pkg:npm/https-proxy-agent@7.0.6",
+        "pkg:npm/lru-cache@10.4.3",
+        "pkg:npm/socks-proxy-agent@8.0.5"
+      ]
+    },
+    {
+      "ref": "pkg:npm/%40npmcli/fs@4.0.0",
+      "dependsOn": [
+        "pkg:npm/semver@7.8.5"
+      ]
     },
     {
       "ref": "pkg:npm/%40octokit/auth-token@6.0.0",
@@ -1422,6 +3212,10 @@
       ]
     },
     {
+      "ref": "pkg:npm/%40pkgjs/parseargs@0.11.0",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:npm/%40sigstore/bundle@3.1.0",
       "dependsOn": [
         "pkg:npm/%40sigstore/protobuf-specs@0.4.3"
@@ -1441,6 +3235,7 @@
         "pkg:npm/%40sigstore/bundle@3.1.0",
         "pkg:npm/%40sigstore/core@2.0.0",
         "pkg:npm/%40sigstore/protobuf-specs@0.4.3",
+        "pkg:npm/make-fetch-happen@14.0.3",
         "pkg:npm/proc-log@5.0.0",
         "pkg:npm/promise-retry@2.0.1"
       ]
@@ -1468,6 +3263,10 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:npm/agent-base@7.1.4",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:npm/almanac@0.0.0",
       "dependsOn": [
         "pkg:npm/%40noble/hashes@2.4.0",
@@ -1480,6 +3279,18 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:npm/ansi-regex@6.4.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/ansi-styles@6.2.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/balanced-match@1.0.2",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:npm/before-after-hook@4.0.0",
       "dependsOn": []
     },
@@ -1488,8 +3299,73 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:npm/brace-expansion@2.1.7",
+      "dependsOn": [
+        "pkg:npm/balanced-match@1.0.2"
+      ]
+    },
+    {
+      "ref": "pkg:npm/cacache@19.0.1",
+      "dependsOn": [
+        "pkg:npm/%40npmcli/fs@4.0.0",
+        "pkg:npm/fs-minipass@3.0.3",
+        "pkg:npm/glob@10.5.0",
+        "pkg:npm/lru-cache@10.4.3",
+        "pkg:npm/minipass-collect@2.0.1",
+        "pkg:npm/minipass-flush@1.0.7",
+        "pkg:npm/minipass-pipeline@1.2.4",
+        "pkg:npm/minipass@7.1.3",
+        "pkg:npm/p-map@7.1.1",
+        "pkg:npm/ssri@12.0.0",
+        "pkg:npm/tar@7.5.22",
+        "pkg:npm/unique-filename@4.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/chownr@3.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/color-convert@2.0.1",
+      "dependsOn": [
+        "pkg:npm/color-name@1.1.4"
+      ]
+    },
+    {
+      "ref": "pkg:npm/color-name@1.1.4",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:npm/content-type@3.1.1",
       "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/cross-spawn@7.0.6",
+      "dependsOn": [
+        "pkg:npm/path-key@3.1.1",
+        "pkg:npm/shebang-command@2.0.0",
+        "pkg:npm/which@2.0.2"
+      ]
+    },
+    {
+      "ref": "pkg:npm/debug@4.4.3",
+      "dependsOn": [
+        "pkg:npm/ms@2.1.3"
+      ]
+    },
+    {
+      "ref": "pkg:npm/eastasianwidth@0.2.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/emoji-regex@9.2.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/encoding@0.1.14",
+      "dependsOn": [
+        "pkg:npm/iconv-lite@0.7.3"
+      ]
     },
     {
       "ref": "pkg:npm/entities@8.1.0",
@@ -1500,6 +3376,77 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:npm/foreground-child@3.3.1",
+      "dependsOn": [
+        "pkg:npm/cross-spawn@7.0.6",
+        "pkg:npm/signal-exit@4.1.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/fs-minipass@3.0.3",
+      "dependsOn": [
+        "pkg:npm/minipass@7.1.3"
+      ]
+    },
+    {
+      "ref": "pkg:npm/glob@10.5.0",
+      "dependsOn": [
+        "pkg:npm/foreground-child@3.3.1",
+        "pkg:npm/jackspeak@3.4.3",
+        "pkg:npm/minimatch@9.0.9",
+        "pkg:npm/minipass@7.1.3",
+        "pkg:npm/package-json-from-dist@1.0.1",
+        "pkg:npm/path-scurry@1.11.1"
+      ]
+    },
+    {
+      "ref": "pkg:npm/http-cache-semantics@4.3.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/http-proxy-agent@7.0.2",
+      "dependsOn": [
+        "pkg:npm/agent-base@7.1.4",
+        "pkg:npm/debug@4.4.3"
+      ]
+    },
+    {
+      "ref": "pkg:npm/https-proxy-agent@7.0.6",
+      "dependsOn": [
+        "pkg:npm/agent-base@7.1.4",
+        "pkg:npm/debug@4.4.3"
+      ]
+    },
+    {
+      "ref": "pkg:npm/iconv-lite@0.7.3",
+      "dependsOn": [
+        "pkg:npm/safer-buffer@2.1.2"
+      ]
+    },
+    {
+      "ref": "pkg:npm/imurmurhash@0.1.4",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/ip-address@10.7.4",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/is-fullwidth-code-point@3.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/isexe@2.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/jackspeak@3.4.3",
+      "dependsOn": [
+        "pkg:npm/%40isaacs/cliui@8.0.2",
+        "pkg:npm/%40pkgjs/parseargs@0.11.0"
+      ]
+    },
+    {
       "ref": "pkg:npm/jose@5.10.0",
       "dependsOn": []
     },
@@ -1508,9 +3455,121 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:npm/lru-cache@10.4.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/make-fetch-happen@14.0.3",
+      "dependsOn": [
+        "pkg:npm/%40npmcli/agent@3.0.0",
+        "pkg:npm/cacache@19.0.1",
+        "pkg:npm/http-cache-semantics@4.3.0",
+        "pkg:npm/minipass-fetch@4.0.1",
+        "pkg:npm/minipass-flush@1.0.7",
+        "pkg:npm/minipass-pipeline@1.2.4",
+        "pkg:npm/minipass@7.1.3",
+        "pkg:npm/negotiator@1.1.0",
+        "pkg:npm/proc-log@5.0.0",
+        "pkg:npm/promise-retry@2.0.1",
+        "pkg:npm/ssri@12.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/minimatch@9.0.9",
+      "dependsOn": [
+        "pkg:npm/brace-expansion@2.1.7"
+      ]
+    },
+    {
+      "ref": "pkg:npm/minipass@7.1.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/minipass-collect@2.0.1",
+      "dependsOn": [
+        "pkg:npm/minipass@7.1.3"
+      ]
+    },
+    {
+      "ref": "pkg:npm/minipass-fetch@4.0.1",
+      "dependsOn": [
+        "pkg:npm/encoding@0.1.14",
+        "pkg:npm/minipass-sized@1.0.3",
+        "pkg:npm/minipass@7.1.3",
+        "pkg:npm/minizlib@3.1.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/minipass-flush@1.0.7",
+      "dependsOn": [
+        "pkg:npm/minipass@3.3.6"
+      ]
+    },
+    {
+      "ref": "pkg:npm/minipass@3.3.6",
+      "dependsOn": [
+        "pkg:npm/yallist@4.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/yallist@4.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/minipass-pipeline@1.2.4",
+      "dependsOn": [
+        "pkg:npm/minipass@3.3.6"
+      ]
+    },
+    {
+      "ref": "pkg:npm/minipass-sized@1.0.3",
+      "dependsOn": [
+        "pkg:npm/minipass@3.3.6"
+      ]
+    },
+    {
+      "ref": "pkg:npm/minizlib@3.1.0",
+      "dependsOn": [
+        "pkg:npm/minipass@7.1.3"
+      ]
+    },
+    {
+      "ref": "pkg:npm/ms@2.1.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/negotiator@1.1.0",
+      "dependsOn": [
+        "pkg:npm/content-type@2.1.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/content-type@2.1.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/p-map@7.1.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/package-json-from-dist@1.0.1",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:npm/parse5@8.0.1",
       "dependsOn": [
         "pkg:npm/entities@8.1.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/path-key@3.1.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/path-scurry@1.11.1",
+      "dependsOn": [
+        "pkg:npm/lru-cache@10.4.3",
+        "pkg:npm/minipass@7.1.3"
       ]
     },
     {
@@ -1540,6 +3599,99 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:npm/safer-buffer@2.1.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/semver@7.8.5",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/shebang-command@2.0.0",
+      "dependsOn": [
+        "pkg:npm/shebang-regex@3.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/shebang-regex@3.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/signal-exit@4.1.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/smart-buffer@4.2.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/socks@2.8.10",
+      "dependsOn": [
+        "pkg:npm/ip-address@10.7.4",
+        "pkg:npm/smart-buffer@4.2.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/socks-proxy-agent@8.0.5",
+      "dependsOn": [
+        "pkg:npm/agent-base@7.1.4",
+        "pkg:npm/debug@4.4.3",
+        "pkg:npm/socks@2.8.10"
+      ]
+    },
+    {
+      "ref": "pkg:npm/ssri@12.0.0",
+      "dependsOn": [
+        "pkg:npm/minipass@7.1.3"
+      ]
+    },
+    {
+      "ref": "pkg:npm/string-width@5.1.2",
+      "dependsOn": [
+        "pkg:npm/eastasianwidth@0.2.0",
+        "pkg:npm/emoji-regex@9.2.2",
+        "pkg:npm/strip-ansi@7.2.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/string-width@4.2.3",
+      "dependsOn": [
+        "pkg:npm/emoji-regex@8.0.0",
+        "pkg:npm/is-fullwidth-code-point@3.0.0",
+        "pkg:npm/strip-ansi@6.0.1"
+      ]
+    },
+    {
+      "ref": "pkg:npm/ansi-regex@5.0.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/emoji-regex@8.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/strip-ansi@6.0.1",
+      "dependsOn": [
+        "pkg:npm/ansi-regex@5.0.1"
+      ]
+    },
+    {
+      "ref": "pkg:npm/strip-ansi@7.2.0",
+      "dependsOn": [
+        "pkg:npm/ansi-regex@6.4.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/tar@7.5.22",
+      "dependsOn": [
+        "pkg:npm/%40isaacs/fs-minipass@4.0.1",
+        "pkg:npm/chownr@3.0.0",
+        "pkg:npm/minipass@7.1.3",
+        "pkg:npm/minizlib@3.1.0",
+        "pkg:npm/yallist@5.0.0"
+      ]
+    },
+    {
       "ref": "pkg:npm/tunnel@0.0.6",
       "dependsOn": []
     },
@@ -1552,7 +3704,51 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:npm/unique-filename@4.0.0",
+      "dependsOn": [
+        "pkg:npm/unique-slug@5.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/unique-slug@5.0.0",
+      "dependsOn": [
+        "pkg:npm/imurmurhash@0.1.4"
+      ]
+    },
+    {
       "ref": "pkg:npm/universal-user-agent@7.0.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/which@2.0.2",
+      "dependsOn": [
+        "pkg:npm/isexe@2.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/wrap-ansi@8.1.0",
+      "dependsOn": [
+        "pkg:npm/ansi-styles@6.2.3",
+        "pkg:npm/string-width@5.1.2",
+        "pkg:npm/strip-ansi@7.2.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/wrap-ansi@7.0.0",
+      "dependsOn": [
+        "pkg:npm/ansi-styles@4.3.0",
+        "pkg:npm/string-width@4.2.3",
+        "pkg:npm/strip-ansi@6.0.1"
+      ]
+    },
+    {
+      "ref": "pkg:npm/ansi-styles@4.3.0",
+      "dependsOn": [
+        "pkg:npm/color-convert@2.0.1"
+      ]
+    },
+    {
+      "ref": "pkg:npm/yallist@5.0.0",
       "dependsOn": []
     },
     {
