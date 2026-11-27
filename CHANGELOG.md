@@ -2,6 +2,15 @@
 
 Each version is a tag of this repository, and a workflow pins the tag's full commit.
 
+## 1.1.0
+
+- Submit attested job evidence through a verification pull request. Sourcey
+  replays the retained proof against the exact current declaration; its admitted
+  merge authorizes publication. A successful upload alone does not verify a card.
+- Show the prepared pull request in the run summary while publication is pending.
+- Support the canonical public web-search job, with the request query and its
+  expected result URL checked together. Grading rules are unchanged.
+
 ## 1.0.5
 
 - Use Zod 4.6.7 and the matching Almanac dependency closure. The workflow,

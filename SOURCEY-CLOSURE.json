@@ -16,7 +16,7 @@
     },
     {
       "path": "dist/contracts/agent-readiness/src/jobs.js",
-      "sha256": "sha256:bdfa2f7235d5af945940f77546e4b92b3f43d3969ca1b7ad11bbe8d4267f9a7e"
+      "sha256": "sha256:891d3539681cb066aa73588135ee6f17e08ae8fe13d12f9f1333570eb17b7683"
     },
     {
       "path": "dist/contracts/agent-readiness/src/operation.js",
@@ -28,7 +28,7 @@
     },
     {
       "path": "dist/contracts/agent-readiness/src/shared.js",
-      "sha256": "sha256:f72468dc94e18eae6e1583a014370bad322344f98eafa5d8a7222fe6db9a7254"
+      "sha256": "sha256:661a96d5081541b883aade76da8e6ca4f9b02943737ed6359e7ecfc6cd3f71ac"
     },
     {
       "path": "dist/contracts/agent-readiness/src/surfaces.js",
@@ -36,7 +36,7 @@
     },
     {
       "path": "dist/contracts/agent-readiness/src/verified-run.js",
-      "sha256": "sha256:33cf7cf6d0e5f52b3880048ae7bebd6ac2aafb23b2bda991efe723954287224d"
+      "sha256": "sha256:964dc8cba71f11aac73f026fd3880ec71d13a1248585c80f955ea01ac0e22d8c"
     },
     {
       "path": "dist/contracts/api/src/values.js",
@@ -84,7 +84,7 @@
     },
     {
       "path": "dist/modules/agent-readiness-jobs/src/index.js",
-      "sha256": "sha256:d462ab6678f876094d94e648761fef2356528137d93b4784b0cba3b5d194c5d3"
+      "sha256": "sha256:19d1402b1c2d63f86c4c18b379e7c592caab81425aea12b3504f4e71f0d2dda6"
     },
     {
       "path": "dist/modules/catalog-primitives/src/index.js",
@@ -92,7 +92,7 @@
     },
     {
       "path": "dist/packages/agent-readiness-action/src/action.js",
-      "sha256": "sha256:5becd0a844eceaa604caaa8494e0423ee11cb9986bd9d025389d67774079366a"
+      "sha256": "sha256:2f73a8f7bd62ffe6c1c418853320403ba201121164dc334189edc67fa5aa6fc3"
     },
     {
       "path": "dist/packages/agent-readiness-action/src/run.js",
@@ -103,5 +103,5 @@
       "sha256": "sha256:14a95fb4205f099193b75c6c94ccc1aafc23eda059a4181bac33730f9da596f4"
     }
   ],
-  "closure_digest": "sha256:6e671915f77031d919d5f8f5974bf3b2abeef018e63e4306d3bf838820612624"
+  "closure_digest": "sha256:2530da0d93097e7bd95c3add09d659b1a4fb1fc72aa660757c763cd6c5c0ffce"
 }

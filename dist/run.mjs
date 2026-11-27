@@ -54284,6 +54284,7 @@ var agentReadinessDigestSchema = external_exports.string().regex(DIGEST_PATTERN)
 var agentReadinessEntityIdSchema = external_exports.string().regex(ENTITY_ID_PATTERN);
 var agentReadinessOfferIdSchema = external_exports.string().regex(OFFER_ID_PATTERN);
 var agentReadinessProfileIdSchema = external_exports.string().regex(AGENT_READINESS_PROFILE_ID_PATTERN);
+var agentReadinessIntakeIdSchema = external_exports.string().regex(/^ari_[0-9a-hjkmnp-tv-z]{26}$/u);
 var agentReadinessIdentifierSchema = external_exports.string().regex(IDENTIFIER_PATTERN);
 var agentReadinessInstantSchema = external_exports.iso.datetime({ offset: true });
 var agentReadinessScopeKeySchema = external_exports.string().regex(SLUG_PATTERN);
@@ -54456,6 +54457,7 @@ var agentReadinessJobAssertionSchema = external_exports.object({
     "resource_read_back",
     "claim_read_back",
     "resource_found_by_query",
+    "web_search_result",
     "message_accepted",
     "message_delivered",
     "sink_received"
@@ -54597,6 +54599,13 @@ var PROOF_SIGNATURES = {
     ],
     differentCall: [["created_id", "found_id"]],
     independentCall: [["query", "created_id"]]
+  },
+  web_search_result: {
+    observations: [
+      { name: "query", source: "request", method: "query", input: "query" },
+      { name: "result_url", source: "json", method: "query" }
+    ],
+    sameCall: [["query", "result_url"]]
   },
   /** A message's identifier is the service's: a caller never names it. */
   message_accepted: { observations: [{ name: "id", source: "json", method: "write" }] },
@@ -57201,7 +57210,6 @@ function boundedArray(item, maximum) {
 }
 var ulid3 = /[0-9a-hjkmnp-tv-z]{26}/u.source;
 var agentReadinessChallengeIdSchema = external_exports.string().regex(new RegExp(`^arc_${ulid3}$`, "u"));
-var agentReadinessIntakeIdSchema = external_exports.string().regex(new RegExp(`^ari_${ulid3}$`, "u"));
 var nameSchema4 = external_exports.string().regex(/^[a-z][a-z0-9_]{0,63}$/u);
 var githubIdSchema = external_exports.string().regex(/^[1-9][0-9]{0,19}$/u);
 var githubRunSchema = external_exports.object({
@@ -57286,6 +57294,16 @@ var agentReadinessIntakeSchema = external_exports.discriminatedUnion("state", [
     intake_id: agentReadinessIntakeIdSchema,
     challenge_id: agentReadinessChallengeIdSchema,
     state: external_exports.literal("queued")
+  }).strict(),
+  external_exports.object({
+    intake_id: agentReadinessIntakeIdSchema,
+    challenge_id: agentReadinessChallengeIdSchema,
+    state: external_exports.literal("proposed"),
+    run_digest: agentReadinessDigestSchema,
+    outcome: agentReadinessRunOutcomeSchema,
+    vendor: agentReadinessVendorReadingSchema,
+    /** Null while the durable GitHub handoff is still preparing the PR. */
+    pull_request_url: external_exports.url({ protocol: /^https$/u }).nullable()
   }).strict(),
   external_exports.object({
     intake_id: agentReadinessIntakeIdSchema,
@@ -60340,7 +60358,7 @@ function madeAndReadBack(job) {
 }
 var AGENT_READINESS_JOB_LIBRARY_SOURCE = {
   library_contract: AGENT_READINESS_JOB_LIBRARY_CONTRACT,
-  library_version: "2026-10-12.2",
+  library_version: "2026-10-12.3",
   jobs: [
     {
       job_id: "bounty-claim",
@@ -60779,6 +60797,26 @@ var AGENT_READINESS_JOB_LIBRARY_SOURCE = {
       made_statement: "The service creates the asset under an identifier it returns or was given.",
       read_back_statement: "The asset reads back under that identifier with the nonce as its title."
     }),
+    {
+      job_id: "web-search",
+      category: "web-search",
+      name: "Search the web",
+      statement: "Search the public web for a known page and receive that page's URL in the results.",
+      inputs: [
+        { kind: "fixed", name: "query", value: 'site:example.com "Example Domain"' },
+        { kind: "fixed", name: "expected_url", value: "https://example.com/" }
+      ],
+      assertions: [
+        {
+          name: "page_found",
+          statement: "The search sends the library's query and returns the known public page's URL.",
+          proof: "web_search_result"
+        }
+      ],
+      observation_links: [],
+      effect: "billable",
+      cleanup: "none"
+    },
     madeAndReadBack({
       job_id: "workflow-run",
       category: "workflow-automation",
@@ -62071,7 +62109,7 @@ function runReport(intake, job, residue) {
     lines: [
       result,
       whose,
-      intake.card_url === null ? "The listing is no longer published, so no report card shows this run." : `Sourcey is refreshing the report card with this run: ${intake.card_url}`
+      intake.state === "proposed" ? intake.pull_request_url === null ? "Sourcey retained the evidence and is preparing its verification PR. It is not published yet." : `Verification proposed for review: ${intake.pull_request_url}. It is published only after merge.` : intake.card_url === null ? "The listing is no longer published, so no report card shows this run." : `Sourcey is refreshing the report card with this run: ${intake.card_url}`
     ]
   };
 }

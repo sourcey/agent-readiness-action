@@ -7,7 +7,9 @@ The Action runs one job from your service's Agent Readiness listing: it asks
 Sourcey for a one-time challenge, makes the job's requests with your
 credentials, records each one, signs the record with your workflow's GitHub
 identity and sends it to Sourcey. Sourcey replays the record, checks the job's
-results itself, and your report card shows the job verified.
+results and prepares a verification pull request in
+[agent-ready-services](https://github.com/sourcey/agent-ready-services).
+Checks and merge authorize the report card to use that evidence.
 
 ## Set it up
 
@@ -29,7 +31,7 @@ API or treat an operator's later cleanup as part of the worker's capabilities.
 `workflow_dispatch` can also be invoked through GitHub's API; it is not proof
 that a person clicked a button. Do not automate dispatches for these jobs.
 
-The card shows the job verified with the date of the last run that did it.
+After merge, the card shows the date of the last admitted run that did the job.
 When a run doesn't do the job, the workflow fails, so GitHub tells you, and the
 run's summary says what failed. GitHub stops the scheduled runs of a public
 repository that has gone 60 days without a commit, so use one that sees
@@ -108,8 +110,9 @@ nothing else with the GitHub token.
   service that answers 429 or 5xx.
 - Sourcey receives a record of each request (method, address, header names,
   status, sizes and fingerprints), the response bodies with credentials
-  removed, and a signed attestation of the record. It publishes the record and
-  keeps the bodies and the attestation private.
+  removed, and a signed attestation of the record. The pull request carries
+  only a reference to retained evidence. After admission and merge, Sourcey
+  publishes the record and keeps the bodies and the attestation private.
 
 ## Say the runs are yours
 
